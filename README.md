@@ -2,4 +2,4 @@
 
 Portfólio de Lidi Michielin, criadora de conteúdo UGC em Porto Alegre/RS.
 
-Site: https://lidiugc-glitch.github.io/Lidi-ugc-/
+Site: https://lidiugc.com.br
