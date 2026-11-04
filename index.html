@@ -1,0 +1,974 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Lidi Michielin UGC</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Lidi Michielin, criadora de conteúdo UGC em Porto Alegre/RS. Vídeos e fotos de gente real para marcas de moda, beleza, skincare, cabelo, fitness, gastronomia e viagens.">
+<meta property="og:title" content="Lidi Michielin UGC">
+<meta property="og:description" content="Conteúdo de gente real que faz o dedo parar.">
+<meta property="og:image" content="assets/img/hero.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=Caveat:wght@500;700&family=Geist:wght@400;500;700&family=Geist+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: caderno de papel creme com uma cor só (framboesa) + preto; títulos condensados gigantes, anotações manuscritas e etiquetas mono; seções que se movem com a rolagem */
+:root {
+  --paper: #f4f1e8;
+  --paper-2: #ebe6d8;
+  --ink: #1d1b18;
+  --ink-70: rgba(29, 27, 24, .7);
+  --ink-45: rgba(29, 27, 24, .45);
+  --ink-12: rgba(29, 27, 24, .12);
+  --berry: #e3335f;
+  --berry-dark: #b8193f;
+  --display: "Anton", Impact, "Arial Narrow", sans-serif;
+  --body: "Geist", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --mono: "Geist Mono", "SF Mono", Menlo, monospace;
+  --hand: "Caveat", "Segoe Print", "Bradley Hand", cursive;
+  --gl: max(20px, env(safe-area-inset-left, 0px));
+  --gr: max(20px, env(safe-area-inset-right, 0px));
+  color-scheme: light;
+}
+*, *::before, *::after { box-sizing: border-box; }
+[hidden] { display: none !important; }
+html.lenis, html.lenis body { height: auto; }
+.lenis.lenis-smooth { scroll-behavior: auto !important; }
+body { margin: 0; background: var(--paper); color: var(--ink); font: 400 1rem/1.55 var(--body); -webkit-font-smoothing: antialiased; overflow-x: clip; }
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 80; background: var(--ink); }
+body::after { content: ""; position: fixed; inset: 0; pointer-events: none; z-index: 70; opacity: .35; mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .5 0 0 0 0 .45 0 0 0 0 .4 0 0 0 .18 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); }
+img, video { display: block; max-width: 100%; }
+a { color: inherit; }
+button { font: inherit; color: inherit; }
+h1, h2, h3, p { margin: 0; }
+:focus-visible { outline: 2px solid var(--berry); outline-offset: 3px; }
+.sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.wrap { max-width: 1320px; margin: 0 auto; padding-left: var(--gl); padding-right: var(--gr); }
+.big { font-family: var(--display); font-weight: 400; text-transform: uppercase; line-height: .9; letter-spacing: .005em; }
+.mono { font: 500 .72rem/1.3 var(--mono); letter-spacing: .08em; text-transform: uppercase; }
+.hand { font-family: var(--hand); font-weight: 700; }
+.red { color: var(--berry); }
+.brk { display: inline-flex; align-items: center; gap: 10px; font: 500 .74rem/1 var(--mono); letter-spacing: .1em; text-transform: uppercase; text-decoration: none; color: var(--berry); background: none; border: 0; cursor: pointer; padding: 6px 0; }
+.brk::before { content: "["; } .brk::after { content: "]"; }
+.brk span { position: relative; display: inline-block; overflow: hidden; }
+.brk span b { display: block; font-weight: 500; transition: transform .35s cubic-bezier(.7,0,.2,1); }
+.brk span b + b { position: absolute; inset: 0; transform: translateY(100%); }
+.brk:hover span b:first-child { transform: translateY(-100%); }
+.brk:hover span b + b { transform: translateY(0); }
+
+/* topo */
+.ticker { position: fixed; top: env(safe-area-inset-top, 0px); left: 0; right: 0; z-index: 60; height: 26px; background: var(--ink); color: var(--paper); overflow: hidden; display: flex; align-items: center; }
+.ticker-track { display: flex; gap: 18px; width: max-content; animation: slide 40s linear infinite; font: 500 .62rem/1 var(--mono); letter-spacing: .1em; text-transform: uppercase; white-space: nowrap; }
+.ticker-track i { font-style: normal; color: var(--berry); }
+@keyframes slide { to { transform: translateX(-50%); } }
+.nav { position: fixed; top: calc(26px + env(safe-area-inset-top, 0px)); left: 0; right: 0; z-index: 60; display: flex; justify-content: space-between; align-items: center; padding: 12px var(--gr) 0 var(--gl); pointer-events: none; }
+.nav > * { pointer-events: auto; }
+.logo { font: 700 2rem/1 var(--hand); color: var(--berry); text-decoration: none; rotate: -4deg; }
+.nav-right { display: flex; gap: 10px; align-items: center; }
+.icon-btn { width: 42px; height: 42px; border-radius: 50%; border: 1.5px solid var(--ink); background: var(--paper); display: grid; place-items: center; cursor: pointer; }
+.bars { display: flex; gap: 2.5px; align-items: flex-end; height: 13px; }
+.bars i { width: 2.5px; height: 4px; background: var(--ink); }
+.icon-btn[aria-pressed="true"] { background: var(--berry); border-color: var(--berry); }
+.icon-btn[aria-pressed="true"] .bars i { background: var(--paper); animation: eq .8s ease-in-out infinite alternate; }
+.icon-btn[aria-pressed="true"] .bars i:nth-child(2) { animation-delay: -.25s; } .icon-btn[aria-pressed="true"] .bars i:nth-child(3) { animation-delay: -.5s; }
+@keyframes eq { from { height: 3px; } to { height: 13px; } }
+.burger span { display: grid; gap: 4px; } .burger i { width: 16px; height: 1.5px; background: var(--ink); display: block; }
+
+/* menu */
+.menu { position: fixed; inset: 0; z-index: 90; background: var(--berry); color: var(--paper); display: grid; align-content: center; padding: 80px var(--gr) 40px var(--gl); clip-path: circle(0% at calc(100% - 40px) 60px); transition: clip-path .7s cubic-bezier(.7,0,.2,1); visibility: hidden; }
+.menu.is-open { clip-path: circle(150% at calc(100% - 40px) 60px); visibility: visible; }
+.menu ol { list-style: none; margin: 0; padding: 0; display: grid; gap: 4px; }
+.menu a { display: flex; align-items: baseline; gap: 16px; text-decoration: none; font: 400 clamp(2.6rem, 9vw, 6rem)/1 var(--display); text-transform: uppercase; }
+.menu a small { font: 500 .8rem/1 var(--mono); opacity: .7; }
+.menu a:hover { color: var(--ink); }
+.menu-close { position: absolute; top: calc(18px + env(safe-area-inset-top, 0px)); right: var(--gr); background: var(--paper); border-color: var(--paper); color: var(--ink); font-size: 1.3rem; }
+
+/* hero */
+.hero { position: relative; min-height: 100svh; padding-top: 100px; display: grid; place-items: center; overflow: hidden; }
+.hero-stage { position: relative; width: min(1180px, 100%); height: min(86svh, 820px); }
+.hero-photo { position: absolute; left: 50%; bottom: 0; translate: -50% 0; height: 100%; z-index: 2; }
+.hero-photo { height: 100%; }
+.hero-photo img { height: 100%; width: auto; max-width: none; }
+.scribble { position: absolute; inset: -4% -18%; z-index: 1; pointer-events: none; }
+.scribble path { fill: none; stroke: var(--berry); stroke-width: 2.4; stroke-linecap: round; }
+.hw { position: absolute; z-index: 3; color: var(--berry); font-size: clamp(3.4rem, 9vw, 8.4rem); }
+.hw-oi { left: 4%; top: 10%; }
+.hw-meet { left: 8%; bottom: 14%; }
+.hw-name { right: 2%; bottom: 2%; font-size: clamp(4.6rem, 13vw, 12rem); }
+.hw-brand { position: absolute; z-index: 3; right: 3%; top: 20%; font: 400 clamp(1.1rem, 2.2vw, 1.8rem)/1.2 var(--mono); color: var(--berry); }
+.hw-brand .cursor-blink { display: inline-block; width: .55em; height: 1em; vertical-align: -0.12em; background: var(--berry); animation: blink 1s steps(1) infinite; }
+@keyframes blink { 50% { opacity: 0; } }
+.hero-sticker { position: absolute; z-index: 4; left: 6%; top: 46%; font: 700 1.5rem/1.05 var(--hand); color: var(--ink); rotate: -8deg; max-width: 12ch; }
+.hero-sticker::after { content: ""; display: block; width: 60px; height: 30px; margin: 4px 0 0 40px; border: 2px solid var(--ink); border-color: transparent transparent var(--ink) transparent; border-radius: 0 0 60px 60px; rotate: -20deg; }
+@media (max-width: 760px) {
+  .hero { min-height: 0; padding-top: 96px; padding-bottom: 20px; }
+  .hero-stage { height: 560px; }
+  .hw-oi { left: 2%; top: 2%; } .hw-meet { left: 2%; bottom: 20%; } .hw-name { right: 0; bottom: 0; }
+  .hw-brand { right: 2%; top: 14%; font-size: .95rem; }
+  .hero-photo { height: auto; width: 100%; bottom: 12%; }
+  .hero-photo img { width: 100%; height: auto; }
+
+  .hw-oi { top: 0; } .hw-meet { bottom: 6%; left: 2%; } .hw-name { bottom: -2%; }
+  .hw-brand { top: 6%; }
+  .hero-sticker { display: none; }
+}
+
+/* citação */
+.quote { padding-block: clamp(80px, 12vw, 160px); position: relative; }
+.quote blockquote { margin: 0 auto; max-width: 820px; font: 700 clamp(2rem, 4.6vw, 3.6rem)/1.15 var(--hand); color: var(--berry); rotate: -2deg; }
+.quote blockquote .ln { display: block; clip-path: inset(0 0 0 0); }
+.js .quote blockquote .ln { clip-path: inset(0 100% 0 0); }
+.quote cite { display: block; margin-top: 18px; font: 700 1.8rem/1 var(--hand); font-style: normal; text-align: right; color: var(--ink); }
+.dash { position: absolute; font: 700 1.4rem/1 var(--hand); color: var(--berry); opacity: .6; }
+
+/* sobre + skills */
+.pitch { padding-block: 40px clamp(80px, 10vw, 140px); }
+.pitch-grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(30px, 6vw, 90px); align-items: center; }
+.pitch-grid > * { min-width: 0; }
+.pitch h2 { font-size: clamp(2.4rem, 5vw, 4.2rem); color: var(--berry); margin-bottom: 18px; }
+.pitch p { max-width: 50ch; color: var(--ink-70); font-size: 1.05rem; }
+.pitch p + p { margin-top: 12px; }
+.pitch .brk { margin-top: 20px; }
+.skills { list-style: none; margin: 0; padding: 0; display: grid; gap: 2px; }
+.skills li { font: 400 clamp(2rem, 4.6vw, 3.8rem)/1 var(--display); text-transform: uppercase; transition: filter .4s, opacity .4s, color .4s; }
+.js .skills li { filter: blur(5px); opacity: .25; }
+.skills li.on { filter: none; opacity: 1; }
+.skills li.on::after { content: " ✺"; color: var(--berry); font-size: .5em; vertical-align: .5em; }
+@media (max-width: 760px) { .pitch-grid { grid-template-columns: 1fr; } }
+
+/* marcas */
+.brands { border-block: 1.5px solid var(--ink); padding-block: 18px; overflow: hidden; }
+.brand-track { display: flex; align-items: center; gap: 26px; width: max-content; animation: slide 45s linear infinite; white-space: nowrap; }
+.brand-track span { font: 400 clamp(1.6rem, 3.4vw, 2.6rem)/1 var(--display); text-transform: uppercase; }
+.brand-track i { font-style: normal; color: var(--berry); }
+
+/* trabalhos empilhados */
+.works { position: relative; min-height: 100svh; overflow: hidden; display: grid; place-items: center; padding-block: 90px 40px; }
+.works-title { position: absolute; z-index: 1; left: var(--gl); right: var(--gr); top: 50%; translate: 0 -50%; text-align: center; color: var(--berry); font-size: clamp(3.6rem, 11vw, 10rem); pointer-events: none; }
+.works-hint { position: absolute; left: 0; right: 0; bottom: 26px; text-align: center; color: var(--ink-45); }
+.stack { position: relative; z-index: 2; width: clamp(220px, 26vw, 320px); aspect-ratio: 3 / 4; }
+.wcard { position: absolute; inset: 0; border: 0; padding: 12px 12px 48px; background: #fffdf7; color: var(--ink); cursor: pointer; rotate: var(--r); translate: var(--x) 0; box-shadow: 0 18px 40px rgba(29,27,24,.25); text-align: left; transition: scale .3s; }
+.wcard:hover { scale: 1.03; z-index: 20; }
+.wcard img { width: 100%; height: 100%; object-fit: cover; }
+.wcard-note { position: absolute; left: 22px; top: 20px; max-width: 70%; font: 500 .66rem/1.35 var(--mono); color: var(--paper); text-shadow: 0 1px 6px rgba(0,0,0,.5); }
+.wcard-brand { position: absolute; left: 14px; bottom: 12px; font: 400 1.4rem/1 var(--display); text-transform: uppercase; }
+.wcard-play { position: absolute; right: 14px; bottom: 12px; font-size: 1rem; color: var(--berry); }
+.no-pin .works { min-height: 0; display: block; }
+.no-pin .works-title { position: static; translate: none; margin-bottom: 30px; }
+.no-pin .stack { width: auto; aspect-ratio: auto; display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 22px; padding: 0 var(--gr) 0 var(--gl); }
+.no-pin .wcard { position: relative; aspect-ratio: 3 / 4; translate: none; }
+.no-pin .works-hint { display: none; }
+
+/* grade de vídeos */
+.vids { padding-block: clamp(80px, 10vw, 130px); }
+.sec-head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: end; gap: 18px 40px; margin-bottom: 30px; }
+.sec-head h2 { font-size: clamp(3rem, 8vw, 6.4rem); }
+.sec-head p { max-width: 40ch; color: var(--ink-70); }
+.chips { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 26px; }
+.chip { padding: 9px 14px; border: 1.5px solid var(--ink); border-radius: 999px; background: transparent; cursor: pointer; font: 500 .7rem/1 var(--mono); letter-spacing: .08em; text-transform: uppercase; }
+.chip[aria-pressed="true"] { background: var(--ink); color: var(--paper); }
+.vgrid { display: grid; grid-template-columns: repeat(auto-fill, minmax(170px, 1fr)); gap: 16px; }
+.vtile { min-width: 0; border: 0; padding: 0; background: none; cursor: pointer; text-align: left; display: grid; gap: 8px; }
+.vthumb { position: relative; display: block; aspect-ratio: 9 / 16; overflow: hidden; background: var(--ink); }
+.vthumb img, .vthumb video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.vthumb video { opacity: 0; transition: opacity .3s; }
+.vtile.is-hover .vthumb video { opacity: 1; }
+.vthumb::after { content: "▶"; position: absolute; right: 10px; bottom: 10px; width: 34px; height: 34px; border-radius: 50%; display: grid; place-items: center; background: var(--berry); color: var(--paper); font-size: .7rem; }
+.vmeta { display: grid; gap: 2px; }
+.vmeta b { font: 400 1.2rem/1 var(--display); text-transform: uppercase; }
+.vmeta i { font: 500 .66rem/1.2 var(--mono); letter-spacing: .06em; text-transform: uppercase; font-style: normal; color: var(--ink-45); }
+@media (max-width: 520px) { .vgrid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; } }
+
+/* reels */
+.reels { padding-block: 20px clamp(80px, 10vw, 130px); position: relative; }
+.rlist { list-style: none; margin: 0; padding: 0; border-top: 1.5px solid var(--ink); }
+.rrow { display: grid; grid-template-columns: 50px 1fr 1fr 30px; gap: 16px; align-items: baseline; padding: 16px 4px; border-bottom: 1.5px solid var(--ink); text-decoration: none; transition: background .25s, color .25s, padding .25s; }
+.rrow:hover { background: var(--berry); color: var(--paper); padding-left: 16px; }
+.rnum { font: 500 .74rem/1 var(--mono); color: var(--berry); }
+.rrow:hover .rnum { color: var(--paper); }
+.rname { font: 400 clamp(1.5rem, 3vw, 2.4rem)/1 var(--display); text-transform: uppercase; }
+.rdesc { font-size: .95rem; color: var(--ink-70); }
+.at { display: block; font: 500 .7rem/1.3 var(--mono); font-style: normal; text-transform: none; letter-spacing: .02em; color: var(--berry); margin-top: 3px; }
+.rrow:hover .at { color: var(--paper); }
+.rrow:hover .rdesc { color: var(--paper); }
+.rgo { text-align: right; }
+.rpeek { position: fixed; left: 0; top: 0; z-index: 50; width: 180px; aspect-ratio: 9 / 16; pointer-events: none; opacity: 0; scale: .8; transition: opacity .25s, scale .25s; box-shadow: 0 20px 40px rgba(0,0,0,.3); }
+.rpeek.on { opacity: 1; scale: 1; }
+.rpeek img { width: 100%; height: 100%; object-fit: cover; }
+@media (max-width: 640px) { .rrow { grid-template-columns: 34px 1fr 20px; } .rdesc { display: none; } }
+
+/* polaroids */
+.photos { padding-block: 40px clamp(80px, 10vw, 120px); overflow: hidden; }
+.strip { display: grid; grid-auto-flow: column; grid-template-rows: auto auto; gap: 34px 26px; padding: 30px var(--gr) 40px var(--gl); overflow-x: auto; scrollbar-width: none; cursor: grab; justify-content: start; }
+.strip.dragging { cursor: grabbing; }
+.strip::-webkit-scrollbar { display: none; }
+.polaroid { flex: 0 0 auto; width: clamp(190px, 20vw, 250px); margin: 0; padding: 10px 10px 46px; background: #fffdf7; box-shadow: 0 14px 30px rgba(29,27,24,.16); rotate: var(--r); position: relative; user-select: none; transition: rotate .3s, translate .3s; }
+.polaroid:hover { rotate: 0deg; translate: 0 -8px; }
+.polaroid img { width: 100%; aspect-ratio: 3 / 4; object-fit: cover; pointer-events: none; }
+.polaroid figcaption { position: absolute; left: 0; right: 0; bottom: 10px; text-align: center; font: 700 1.35rem/1 var(--hand); color: var(--ink); }
+
+/* faq */
+.faq { padding-block: clamp(80px, 10vw, 130px); }
+.faq-grid { display: grid; grid-template-columns: .8fr 2fr; gap: clamp(30px, 5vw, 70px); }
+.faq-grid > * { min-width: 0; }
+.faq h2 { font-size: clamp(3rem, 7vw, 6rem); color: var(--berry); position: sticky; top: 110px; align-self: start; }
+.qs { display: grid; grid-template-columns: 1fr 1fr; gap: 36px 40px; }
+.q span { font: 500 .72rem/1 var(--mono); color: var(--berry); }
+.q h3 { font: 400 clamp(1.3rem, 2.2vw, 1.7rem)/1.05 var(--display); text-transform: uppercase; margin: 8px 0 8px; }
+.q p { color: var(--ink-70); font-size: .98rem; }
+@media (max-width: 860px) { .faq-grid { grid-template-columns: 1fr; } .faq h2 { position: static; } }
+@media (max-width: 560px) { .qs { grid-template-columns: 1fr; } }
+
+/* orçamento */
+.quote-box { padding-block: 0 clamp(80px, 10vw, 130px); }
+.qb { border: 1.5px solid var(--ink); background: #fffdf7; padding: clamp(22px, 4vw, 44px); display: grid; grid-template-columns: 1fr 1fr; gap: clamp(24px, 4vw, 56px); }
+.qb > * { min-width: 0; }
+.qb h2 { font-size: clamp(2.4rem, 5vw, 4rem); }
+.qb h2 em { font: 700 1.1em/1 var(--hand); color: var(--berry); text-transform: none; font-style: normal; }
+.qb-intro { color: var(--ink-70); margin-top: 12px; max-width: 44ch; }
+.qb fieldset { border: 0; padding: 0; margin: 0 0 18px; }
+.qb legend { font: 500 .72rem/1 var(--mono); letter-spacing: .08em; text-transform: uppercase; margin-bottom: 10px; color: var(--berry); }
+.opts { display: flex; flex-wrap: wrap; gap: 6px; }
+.opt { position: relative; }
+.opt input { position: absolute; opacity: 0; inset: 0; cursor: pointer; }
+.opt span { display: inline-block; padding: 9px 13px; border: 1.5px solid var(--ink); border-radius: 999px; font: 500 .72rem/1 var(--mono); text-transform: uppercase; letter-spacing: .06em; }
+.opt input:checked + span { background: var(--ink); color: var(--paper); }
+.opt input:focus-visible + span { outline: 2px solid var(--berry); outline-offset: 2px; }
+.qty { display: flex; align-items: center; gap: 10px; }
+.qty button { width: 36px; height: 36px; border-radius: 50%; border: 1.5px solid var(--ink); background: none; cursor: pointer; font-size: 1.1rem; }
+.qty output { font: 400 1.8rem/1 var(--display); min-width: 2ch; text-align: center; }
+.summary { margin-top: 6px; padding: 16px 18px; background: var(--paper); border-left: 4px solid var(--berry); font-size: .95rem; }
+.summary b { font-weight: 700; }
+.send { margin-top: 16px; display: inline-flex; align-items: center; gap: 10px; padding: 15px 22px; background: var(--berry); color: var(--paper); text-decoration: none; font: 500 .78rem/1 var(--mono); letter-spacing: .1em; text-transform: uppercase; }
+.send:hover { background: var(--ink); }
+.qb-note { margin-top: 12px; font-size: .85rem; color: var(--ink-45); }
+.terms { margin-top: 22px; display: grid; gap: 10px; }
+.terms details { border-top: 1.5px solid var(--ink-12); padding-top: 10px; }
+.terms summary { cursor: pointer; font: 400 1.2rem/1.1 var(--display); text-transform: uppercase; list-style: none; display: flex; justify-content: space-between; }
+.terms summary::after { content: "+"; color: var(--berry); }
+.terms details[open] summary::after { content: "–"; }
+.terms details p { margin-top: 8px; color: var(--ink-70); font-size: .95rem; }
+@media (max-width: 860px) { .qb { grid-template-columns: 1fr; } }
+
+/* bora criar */
+.edge { position: relative; overflow: hidden; padding-block: clamp(60px, 8vw, 100px); }
+.edge-lines { font: 700 clamp(2.2rem, 5.4vw, 4.6rem)/1.05 var(--hand); color: var(--ink); white-space: nowrap; opacity: .9; }
+.edge-lines div { overflow: hidden; }
+.edge-big { position: absolute; inset: 0; display: grid; align-content: center; justify-items: center; gap: 0; text-decoration: none; }
+.edge-big:hover span { color: var(--berry-dark); }
+.edge-big span { font: 400 clamp(4.6rem, 16vw, 14rem)/.9 var(--display); transition: color .2s; color: var(--berry); text-transform: uppercase; display: block; }
+
+/* rodapé */
+footer { position: relative; overflow: hidden; padding-block: 60px 0; border-top: 1.5px solid var(--ink); }
+.foot { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: end; }
+.foot > * { min-width: 0; }
+.foot .logo { display: inline-block; font-size: 3rem; margin-bottom: 10px; }
+.foot p { color: var(--ink-70); }
+.links { display: flex; flex-wrap: wrap; gap: 8px 20px; margin-top: 18px; }
+.links a { font: 500 .78rem/1 var(--mono); text-transform: uppercase; letter-spacing: .08em; text-decoration: none; }
+.links a:hover { color: var(--berry); }
+.copyline { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; margin-top: 14px; font: 500 .78rem/1.4 var(--mono); }
+.copyline b { user-select: all; font-weight: 500; }
+.copy { background: none; border: 1.5px solid var(--ink-12); padding: 5px 8px; cursor: pointer; font: 500 .66rem/1 var(--mono); text-transform: uppercase; color: var(--berry); }
+.fnav { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 6px 30px; }
+.fnav a { display: flex; justify-content: space-between; gap: 10px; font: 500 .78rem/1.6 var(--mono); text-transform: uppercase; text-decoration: none; border-bottom: 1px solid var(--ink-12); }
+.fnav a small { color: var(--berry); }
+.fnav a:hover { color: var(--berry); }
+.legal { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px; margin-top: 40px; color: var(--ink-45); }
+.mega { font: 400 clamp(5rem, 22vw, 20rem)/.8 var(--display); text-transform: uppercase; text-align: center; color: var(--paper-2); margin-top: 20px; white-space: nowrap; padding-bottom: env(safe-area-inset-bottom, 0px); }
+@media (max-width: 760px) { .foot { grid-template-columns: 1fr; } }
+
+/* modal de vídeo */
+.modal { position: fixed; inset: 0; z-index: 100; background: rgba(29,27,24,.88); display: grid; place-items: center; padding: 60px var(--gr) 40px var(--gl); }
+.modal-box { position: relative; height: min(82svh, 760px); aspect-ratio: 9 / 16; max-width: 100%; background: var(--ink); }
+.modal video { width: 100%; height: 100%; object-fit: contain; background: #000; }
+.modal-title { position: absolute; left: 0; top: -36px; color: var(--paper); font: 400 1.5rem/1 var(--display); text-transform: uppercase; }
+.modal-close { position: absolute; right: 0; top: -44px; background: var(--paper); border-color: var(--paper); }
+
+/* cursor */
+.cur { position: fixed; left: 0; top: 0; z-index: 95; width: 12px; height: 12px; margin: -6px 0 0 -6px; border-radius: 50%; background: var(--berry); pointer-events: none; display: none; place-items: center; transition: width .25s, height .25s, margin .25s; }
+.cur span { font: 500 .58rem/1 var(--mono); letter-spacing: .1em; text-transform: uppercase; color: var(--paper); opacity: 0; }
+.cur.big { width: 78px; height: 78px; margin: -39px 0 0 -39px; }
+.cur.big span { opacity: 1; }
+@media (pointer: fine) { .has-cur .cur { display: grid; } }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+  .js .skills li { filter: none; opacity: 1; }
+  .js .quote blockquote .ln { clip-path: none; }
+}
+</style>
+</head>
+<body>
+<script>document.documentElement.classList.add('js');</script>
+
+<div class="ticker" aria-hidden="true"><div class="ticker-track">
+  <span>Agenda aberta para novas parcerias</span><i>♥</i><span>UGC creator · Porto Alegre/RS · Brasil todo</span><i>♥</i><span>24 marcas atendidas</span><i>♥</i><span>vídeos que fazem o dedo parar</span><i>♥</i>
+  <span>Agenda aberta para novas parcerias</span><i>♥</i><span>UGC creator · Porto Alegre/RS · Brasil todo</span><i>♥</i><span>24 marcas atendidas</span><i>♥</i><span>vídeos que fazem o dedo parar</span><i>♥</i>
+  <span>Agenda aberta para novas parcerias</span><i>♥</i><span>UGC creator · Porto Alegre/RS · Brasil todo</span><i>♥</i><span>24 marcas atendidas</span><i>♥</i><span>vídeos que fazem o dedo parar</span><i>♥</i>
+  <span>Agenda aberta para novas parcerias</span><i>♥</i><span>UGC creator · Porto Alegre/RS · Brasil todo</span><i>♥</i><span>24 marcas atendidas</span><i>♥</i><span>vídeos que fazem o dedo parar</span><i>♥</i>
+</div></div>
+
+<header class="nav">
+  <a class="logo" href="#topo">Lidi</a>
+  <div class="nav-right">
+    <button class="icon-btn" id="soundBtn" aria-pressed="false" aria-label="Ligar ou desligar os sons"><span class="bars"><i></i><i></i><i></i></span></button>
+    <button class="icon-btn burger" id="menuBtn" aria-expanded="false" aria-controls="menu" aria-label="Abrir menu"><span><i></i><i></i><i></i></span></button>
+  </div>
+</header>
+
+<nav class="menu" id="menu" aria-label="Menu">
+  <button class="icon-btn menu-close" id="menuClose" aria-label="Fechar menu">×</button>
+  <ol>
+    <li><a href="#trabalhos"><small>01</small>Trabalhos</a></li>
+    <li><a href="#videos"><small>02</small>Vídeos</a></li>
+    <li><a href="#instagram"><small>03</small>No Instagram</a></li>
+    <li><a href="#fotos"><small>04</small>Fotos</a></li>
+    <li><a href="#perguntas"><small>05</small>Perguntas</a></li>
+    <li><a href="#orcamento"><small>06</small>Orçamento</a></li>
+  </ol>
+</nav>
+
+<main>
+<section class="hero" id="topo">
+  <div class="hero-stage">
+    <svg class="scribble" viewBox="0 0 1000 800" preserveAspectRatio="none" aria-hidden="true">
+      <path d="M300 760 C 250 600, 330 520, 290 380 S 330 140, 300 60"/>
+      <path d="M330 780 C 300 640, 380 560, 340 420 S 360 200, 350 120"/>
+      <path d="M700 770 C 760 620, 660 520, 720 380 S 660 160, 700 80"/>
+      <path d="M670 790 C 720 650, 640 560, 690 430 S 640 220, 660 140"/>
+      <path d="M260 300 q 20 -30 40 0 t 40 0"/>
+      <path d="M720 240 q 15 -20 30 0 t 30 0 t 30 0"/>
+    </svg>
+    <div class="hero-photo"><img src="assets/img/recorte/selfie.webp" alt="Lidi Michielin com a mão no queixo, de cabelo solto" fetchpriority="high"></div>
+    <h1 class="sr">Lidi Michielin, UGC creator</h1>
+    <span class="hw hw-oi big" aria-hidden="true">Oi,</span>
+    <span class="hw-brand" aria-hidden="true">{{ <span id="typed">sua marca</span><span class="cursor-blink"></span> }}</span>
+    <span class="hw hw-meet big" aria-hidden="true">Prazer,</span>
+    <span class="hw hw-name big" aria-hidden="true">Lidi</span>
+    <p class="hero-sticker">ugc creator de Porto Alegre pro Brasil</p>
+  </div>
+</section>
+
+<section class="quote">
+  <span class="dash" style="left:8%;top:18%">~</span><span class="dash" style="right:12%;top:30%">*</span><span class="dash" style="left:20%;bottom:20%">//</span>
+  <div class="wrap">
+    <blockquote>
+      <span class="ln">“eu testo, eu sinto, eu conto.</span>
+      <span class="ln">e quando a gente vê…</span>
+      <span class="ln">todo mundo quer</span>
+      <span class="ln">um pouquinho também.”</span>
+    </blockquote>
+    <cite>— eu, Lidi</cite>
+  </div>
+</section>
+
+<section class="pitch" id="sobre">
+  <div class="wrap pitch-grid">
+    <div>
+      <h2 class="big">Sou a pessoa certa pra tua marca vender</h2>
+      <p>Me chamo Lidiane Michielin, mas pode me chamar de Lidi. Sou criadora de conteúdo e UGC Creator: crio vídeos e fotos autênticos, humanizados e estratégicos, que geram identificação, confiança e resultado.</p>
+      <p>Meu foco é transformar produto em experiência e campanha em conexão que vende. Trabalho de Porto Alegre para o Brasil todo.</p>
+      <a class="brk" href="#orcamento"><span><b>Bora trabalhar</b><b>Bora trabalhar</b></span></a>
+    </div>
+    <ul class="skills" id="skills">
+      <li>UGC para anúncios</li>
+      <li>Reels e TikTok</li>
+      <li>Unboxing e review</li>
+      <li>Tutorial</li>
+      <li>Fotos lifestyle</li>
+      <li>Gastronomia</li>
+      <li>Beleza</li>
+      <li>Skincare</li>
+      <li>Pele e cuidados</li>
+      <li>Cabelo</li>
+      <li>Fitness</li>
+      <li>Moda</li>
+      <li>Viagens</li>
+    </ul>
+  </div>
+</section>
+
+<div class="brands" aria-label="Marcas atendidas"><div class="brand-track"><span>Coca-Cola</span><i>✺</i><span>Pantene</span><i>✺</i><span>Freddo</span><i>✺</i><span>Nolie</span><i>✺</i><span>Bro Fitwear</span><i>✺</i><span>Óticas Prevent</span><i>✺</i><span>Zoew Resortwear</span><i>✺</i><span>Leg Gym</span><i>✺</i><span>ProFit</span><i>✺</i><span>Vanessa Altmayer</span><i>✺</i><span>Colina Lagos</span><i>✺</i><span>Encantos do Porto</span><i>✺</i><span>Vila Kamala</span><i>✺</i><span>Be Una</span><i>✺</i><span>Oak&#x27;s</span><i>✺</i><span>Mais Nutriente</span><i>✺</i><span>Varanda Verde</span><i>✺</i><span>We Beauty</span><i>✺</i><span>Arvo</span><i>✺</i><span>Trigo Pizzaria</span><i>✺</i><span>Poeta Bar</span><i>✺</i><span>Le Belle Canto</span><i>✺</i><span>Museu do Vinho</span><i>✺</i><span>Rava Beachwear</span><i>✺</i><span>Coca-Cola</span><i>✺</i><span>Pantene</span><i>✺</i><span>Freddo</span><i>✺</i><span>Nolie</span><i>✺</i><span>Bro Fitwear</span><i>✺</i><span>Óticas Prevent</span><i>✺</i><span>Zoew Resortwear</span><i>✺</i><span>Leg Gym</span><i>✺</i><span>ProFit</span><i>✺</i><span>Vanessa Altmayer</span><i>✺</i><span>Colina Lagos</span><i>✺</i><span>Encantos do Porto</span><i>✺</i><span>Vila Kamala</span><i>✺</i><span>Be Una</span><i>✺</i><span>Oak&#x27;s</span><i>✺</i><span>Mais Nutriente</span><i>✺</i><span>Varanda Verde</span><i>✺</i><span>We Beauty</span><i>✺</i><span>Arvo</span><i>✺</i><span>Trigo Pizzaria</span><i>✺</i><span>Poeta Bar</span><i>✺</i><span>Le Belle Canto</span><i>✺</i><span>Museu do Vinho</span><i>✺</i><span>Rava Beachwear</span><i>✺</i></div></div>
+
+<section class="works" id="trabalhos">
+  <h2 class="works-title big">Trabalhos que eu amo</h2>
+  <div class="stack" id="stack">
+        <button class="wcard" style="--r:-6deg; --x:-9vw" data-video="n-coca-cola" data-title="Coca-Cola" data-cursor="assistir">
+          <img src="assets/video/n-coca-cola.jpg" alt="" loading="lazy">
+          <span class="wcard-note">copa do mundo, amigas e muita torcida</span>
+          <span class="wcard-brand">Coca-Cola</span>
+          <span class="wcard-play" aria-hidden="true">▶</span>
+          <span class="sr">Assistir vídeo Coca-Cola</span>
+        </button>
+        <button class="wcard" style="--r:4deg; --x:0vw" data-video="n-pantene" data-title="Pantene" data-cursor="assistir">
+          <img src="assets/video/n-pantene.jpg" alt="" loading="lazy">
+          <span class="wcard-note">frizz zero, narração e produto na mão</span>
+          <span class="wcard-brand">Pantene</span>
+          <span class="wcard-play" aria-hidden="true">▶</span>
+          <span class="sr">Assistir vídeo Pantene</span>
+        </button>
+        <button class="wcard" style="--r:-3deg; --x:9vw" data-video="n-bro-fitwear" data-title="Bro Fitwear" data-cursor="assistir">
+          <img src="assets/video/n-bro-fitwear.jpg" alt="" loading="lazy">
+          <span class="wcard-note">30 anos de marca, um look novo</span>
+          <span class="wcard-brand">Bro Fitwear</span>
+          <span class="wcard-play" aria-hidden="true">▶</span>
+          <span class="sr">Assistir vídeo Bro Fitwear</span>
+        </button>
+        <button class="wcard" style="--r:7deg; --x:-9vw" data-video="n-nolie" data-title="Nolie" data-cursor="assistir">
+          <img src="assets/video/n-nolie.jpg" alt="" loading="lazy">
+          <span class="wcard-note">três amigas, zero dúvida</span>
+          <span class="wcard-brand">Nolie</span>
+          <span class="wcard-play" aria-hidden="true">▶</span>
+          <span class="sr">Assistir vídeo Nolie</span>
+        </button>
+        <button class="wcard" style="--r:-5deg; --x:0vw" data-video="n-cabana-imbituba" data-title="Encantos do Porto" data-cursor="assistir">
+          <img src="assets/video/n-cabana-imbituba.jpg" alt="" loading="lazy">
+          <span class="wcard-note">a viagem que dá vontade de ir</span>
+          <span class="wcard-brand">Encantos do Porto</span>
+          <span class="wcard-play" aria-hidden="true">▶</span>
+          <span class="sr">Assistir vídeo Encantos do Porto</span>
+        </button>
+        <button class="wcard" style="--r:3deg; --x:9vw" data-video="n-varanda-verde" data-title="Varanda Verde" data-cursor="assistir">
+          <img src="assets/video/n-varanda-verde.jpg" alt="" loading="lazy">
+          <span class="wcard-note">marmita gostosa, almoço sem complicação</span>
+          <span class="wcard-brand">Varanda Verde</span>
+          <span class="wcard-play" aria-hidden="true">▶</span>
+          <span class="sr">Assistir vídeo Varanda Verde</span>
+        </button>
+        <button class="wcard" style="--r:-8deg; --x:-9vw" data-video="v-gas1" data-title="Freddo" data-cursor="assistir">
+          <img src="assets/video/v-gas1.jpg" alt="" loading="lazy">
+          <span class="wcard-note">sorvete que derrete a tela</span>
+          <span class="wcard-brand">Freddo</span>
+          <span class="wcard-play" aria-hidden="true">▶</span>
+          <span class="sr">Assistir vídeo Freddo</span>
+        </button>
+  </div>
+  <p class="works-hint mono">toque num card para assistir com som</p>
+</section>
+
+<section class="vids" id="videos">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2 class="big">Todos os <span class="red">vídeos</span></h2>
+      <p>20 vídeos produzidos para marcas. Passe o mouse para ver uma prévia e toque para assistir com som.</p>
+    </div>
+    <div class="chips" role="group" aria-label="Filtrar vídeos por nicho" id="chips">
+      <button class="chip" aria-pressed="true" data-n="todos">Todos</button>
+      <button class="chip" aria-pressed="false" data-n="gastronomia">Gastronomia</button>
+      <button class="chip" aria-pressed="false" data-n="beleza">Beleza, pele e cabelo</button>
+      <button class="chip" aria-pressed="false" data-n="fitness">Fitness</button>
+      <button class="chip" aria-pressed="false" data-n="moda">Moda</button>
+      <button class="chip" aria-pressed="false" data-n="viagens">Viagens</button>
+    </div>
+    <div class="vgrid" id="vgrid">
+      <button class="vtile" data-n="gastronomia" data-video="n-coca-cola" data-title="Coca-Cola" data-cursor="assistir">
+        <span class="vthumb"><img src="assets/video/n-coca-cola.jpg" alt="" loading="lazy"><video muted playsinline loop preload="none" data-src="assets/video/n-coca-cola.mp4"></video></span>
+        <span class="vmeta"><b>Coca-Cola</b><i>Copa do Mundo</i></span>
+        <span class="sr">Assistir vídeo Coca-Cola com som</span>
+      </button>
+      <button class="vtile" data-n="beleza" data-video="n-pantene" data-title="Pantene" data-cursor="assistir">
+        <span class="vthumb"><img src="assets/video/n-pantene.jpg" alt="" loading="lazy"><video muted playsinline loop preload="none" data-src="assets/video/n-pantene.mp4"></video></span>
+        <span class="vmeta"><b>Pantene</b><i>Sérum Bambu</i></span>
+        <span class="sr">Assistir vídeo Pantene com som</span>
+      </button>
+      <button class="vtile" data-n="moda" data-video="n-bro-fitwear" data-title="Bro Fitwear" data-cursor="assistir">
+        <span class="vthumb"><img src="assets/video/n-bro-fitwear.jpg" alt="" loading="lazy"><video muted playsinline loop preload="none" data-src="assets/video/n-bro-fitwear.mp4"></video></span>
+        <span class="vmeta"><b>Bro Fitwear</b><i>Visita à loja</i><em class="at">@brofitwear_parkshoppingcanoas</em></span>
+        <span class="sr">Assistir vídeo Bro Fitwear com som</span>
+      </button>
+      <button class="vtile" data-n="gastronomia" data-video="n-nolie" data-title="Nolie" data-cursor="assistir">
+        <span class="vthumb"><img src="assets/video/n-nolie.jpg" alt="" loading="lazy"><video muted playsinline loop preload="none" data-src="assets/video/n-nolie.mp4"></video></span>
+        <span class="vmeta"><b>Nolie</b><i>Três amigas, zero dúvida</i><em class="at">@nolienow</em></span>
+        <span class="sr">Assistir vídeo Nolie com som</span>
+      </button>
+      <button class="vtile" data-n="viagens" data-video="n-cabana-imbituba" data-title="Encantos do Porto" data-cursor="assistir">
+        <span class="vthumb"><img src="assets/video/n-cabana-imbituba.jpg" alt="" loading="lazy"><video muted playsinline loop preload="none" data-src="assets/video/n-cabana-imbituba.mp4"></video></span>
+        <span class="vmeta"><b>Encantos do Porto</b><i>Viagem de amigas</i></span>
+        <span class="sr">Assistir vídeo Encantos do Porto com som</span>
+      </button>
+      <button class="vtile" data-n="gastronomia" data-video="n-varanda-verde" data-title="Varanda Verde" data-cursor="assistir">
+        <span class="vthumb"><img src="assets/video/n-varanda-verde.jpg" alt="" loading="lazy"><video muted playsinline loop preload="none" data-src="assets/video/n-varanda-verde.mp4"></video></span>
+        <span class="vmeta"><b>Varanda Verde</b><i>Marmitas · almoço sem complicação</i></span>
+        <span class="sr">Assistir vídeo Varanda Verde com som</span>
+      </button>
+      <button class="vtile" data-n="gastronomia" data-video="n-arvo" data-title="Arvo" data-cursor="assistir">
+        <span class="vthumb"><img src="assets/video/n-arvo.jpg" alt="" loading="lazy"><video muted playsinline loop preload="none" data-src="assets/video/n-arvo.mp4"></video></span>
+        <span class="vmeta"><b>Arvo</b><i>Brasil x Japão</i></span>
+        <span class="sr">Assistir vídeo Arvo com som</span>
+      </button>
+      <button class="vtile" data-n="fitness" data-video="n-look-treino" data-title="Leg Gym" data-cursor="assistir">
+        <span class="vthumb"><img src="assets/video/n-look-treino.jpg" alt="" loading="lazy"><video muted playsinline loop preload="none" data-src="assets/video/n-look-treino.mp4"></video></span>
+        <span class="vmeta"><b>Leg Gym</b><i>Look de treino</i></span>
+        <span class="sr">Assistir vídeo Leg Gym com som</span>
+      </button>
+      <button class="vtile" data-n="beleza" data-video="n-skincare" data-title="Be Una" data-cursor="assistir">
+        <span class="vthumb"><img src="assets/video/n-skincare.jpg" alt="" loading="lazy"><video muted playsinline loop preload="none" data-src="assets/video/n-skincare.mp4"></video></span>
+        <span class="vmeta"><b>Be Una</b><i>Skincare</i></span>
+        <span class="sr">Assistir vídeo Be Una com som</span>
+      </button>
+      <button class="vtile" data-n="gastronomia" data-video="v-gas1" data-title="Freddo" data-cursor="assistir">
+        <span class="vthumb"><img src="assets/video/v-gas1.jpg" alt="" loading="lazy"><video muted playsinline loop preload="none" data-src="assets/video/v-gas1.mp4"></video></span>
+        <span class="vmeta"><b>Freddo</b><i>Sorvetes</i></span>
+        <span class="sr">Assistir vídeo Freddo com som</span>
+      </button>
+      <button class="vtile" data-n="beleza" data-video="n-sobrancelha" data-title="Vanessa Altmayer" data-cursor="assistir">
+        <span class="vthumb"><img src="assets/video/n-sobrancelha.jpg" alt="" loading="lazy"><video muted playsinline loop preload="none" data-src="assets/video/n-sobrancelha.mp4"></video></span>
+        <span class="vmeta"><b>Vanessa Altmayer</b><i>Sobrancelhas</i></span>
+        <span class="sr">Assistir vídeo Vanessa Altmayer com som</span>
+      </button>
+      <button class="vtile" data-n="fitness" data-video="n-academia" data-title="ProFit" data-cursor="assistir">
+        <span class="vthumb"><img src="assets/video/n-academia.jpg" alt="" loading="lazy"><video muted playsinline loop preload="none" data-src="assets/video/n-academia.mp4"></video></span>
+        <span class="vmeta"><b>ProFit</b><i>A mudança começa</i></span>
+        <span class="sr">Assistir vídeo ProFit com som</span>
+      </button>
+      <button class="vtile" data-n="fitness" data-video="n-mais-nutriente-2" data-title="Mais Nutriente" data-cursor="assistir">
+        <span class="vthumb"><img src="assets/video/n-mais-nutriente-2.jpg" alt="" loading="lazy"><video muted playsinline loop preload="none" data-src="assets/video/n-mais-nutriente-2.mp4"></video></span>
+        <span class="vmeta"><b>Mais Nutriente</b><i>Autocuidado e marmita</i></span>
+        <span class="sr">Assistir vídeo Mais Nutriente com som</span>
+      </button>
+      <button class="vtile" data-n="moda" data-video="n-vestido" data-title="Zoew Resortwear" data-cursor="assistir">
+        <span class="vthumb"><img src="assets/video/n-vestido.jpg" alt="" loading="lazy"><video muted playsinline loop preload="none" data-src="assets/video/n-vestido.mp4"></video></span>
+        <span class="vmeta"><b>Zoew Resortwear</b><i>Moda</i></span>
+        <span class="sr">Assistir vídeo Zoew Resortwear com som</span>
+      </button>
+      <button class="vtile" data-n="moda" data-video="v-moda1" data-title="Rava Beachwear" data-cursor="assistir">
+        <span class="vthumb"><img src="assets/video/v-moda1.jpg" alt="" loading="lazy"><video muted playsinline loop preload="none" data-src="assets/video/v-moda1.mp4"></video></span>
+        <span class="vmeta"><b>Rava Beachwear</b><i>Look caramelo</i></span>
+        <span class="sr">Assistir vídeo Rava Beachwear com som</span>
+      </button>
+      <button class="vtile" data-n="moda" data-video="v-moda2" data-title="Rava Beachwear" data-cursor="assistir">
+        <span class="vthumb"><img src="assets/video/v-moda2.jpg" alt="" loading="lazy"><video muted playsinline loop preload="none" data-src="assets/video/v-moda2.mp4"></video></span>
+        <span class="vmeta"><b>Rava Beachwear</b><i>Look preto e branco</i></span>
+        <span class="sr">Assistir vídeo Rava Beachwear com som</span>
+      </button>
+      <button class="vtile" data-n="fitness" data-video="n-treino" data-title="ProFit" data-cursor="assistir">
+        <span class="vthumb"><img src="assets/video/n-treino.jpg" alt="" loading="lazy"><video muted playsinline loop preload="none" data-src="assets/video/n-treino.mp4"></video></span>
+        <span class="vmeta"><b>ProFit</b><i>Academia · wellness</i></span>
+        <span class="sr">Assistir vídeo ProFit com som</span>
+      </button>
+      <button class="vtile" data-n="viagens" data-video="v-via1" data-title="Vila Kamala" data-cursor="assistir">
+        <span class="vthumb"><img src="assets/video/v-via1.jpg" alt="" loading="lazy"><video muted playsinline loop preload="none" data-src="assets/video/v-via1.mp4"></video></span>
+        <span class="vmeta"><b>Vila Kamala</b><i>Hospedagem</i></span>
+        <span class="sr">Assistir vídeo Vila Kamala com som</span>
+      </button>
+      <button class="vtile" data-n="beleza" data-video="n-autocuidado" data-title="We Beauty" data-cursor="assistir">
+        <span class="vthumb"><img src="assets/video/n-autocuidado.jpg" alt="" loading="lazy"><video muted playsinline loop preload="none" data-src="assets/video/n-autocuidado.mp4"></video></span>
+        <span class="vmeta"><b>We Beauty</b><i>Lash lifting</i></span>
+        <span class="sr">Assistir vídeo We Beauty com som</span>
+      </button>
+      <button class="vtile" data-n="gastronomia" data-video="v-gas4" data-title="Freddo" data-cursor="assistir">
+        <span class="vthumb"><img src="assets/video/v-gas4.jpg" alt="" loading="lazy"><video muted playsinline loop preload="none" data-src="assets/video/v-gas4.mp4"></video></span>
+        <span class="vmeta"><b>Freddo</b><i>Sorveteria</i></span>
+        <span class="sr">Assistir vídeo Freddo com som</span>
+      </button>
+    </div>
+  </div>
+</section>
+
+<section class="reels" id="instagram">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2 class="big">Publicados no <span class="red">Instagram</span></h2>
+      <p>Campanhas e parcerias que foram ao ar no @lidimichielin. Toque para abrir o Reels.</p>
+    </div>
+    <ol class="rlist">
+      <li><a class="rrow" href="https://www.instagram.com/reel/DZ5XNttgSnI/" target="_blank" rel="noopener" data-img="assets/img/reels/coca-cola.jpg" data-cursor="abrir">
+        <span class="rnum">01</span><span class="rname">Coca-Cola</span><span class="rdesc">Copa do Mundo FIFA</span><span class="rgo" aria-hidden="true">↗</span>
+      </a></li>
+      <li><a class="rrow" href="https://www.instagram.com/reel/DZsT_3XAMUG/" target="_blank" rel="noopener" data-img="assets/img/reels/pantene.jpg" data-cursor="abrir">
+        <span class="rnum">02</span><span class="rname">Pantene</span><span class="rdesc">Sérum Bambu</span><span class="rgo" aria-hidden="true">↗</span>
+      </a></li>
+      <li><a class="rrow" href="https://www.instagram.com/reel/DWXJeInD0NT/" target="_blank" rel="noopener" data-img="assets/img/reels/freddo-pascoa.jpg" data-cursor="abrir">
+        <span class="rnum">03</span><span class="rname">Freddo</span><span class="rdesc">Páscoa</span><span class="rgo" aria-hidden="true">↗</span>
+      </a></li>
+      <li><a class="rrow" href="https://www.instagram.com/reel/DfCvAtNgb8U/" target="_blank" rel="noopener" data-img="assets/img/reels/bro-fitwear.jpg" data-cursor="abrir">
+        <span class="rnum">04</span><span class="rname">Bro Fitwear<em class="at">@brofitwear_parkshoppingcanoas</em></span><span class="rdesc">ParkShopping Canoas</span><span class="rgo" aria-hidden="true">↗</span>
+      </a></li>
+      <li><a class="rrow" href="https://www.instagram.com/reel/Dec1sHxteKI/" target="_blank" rel="noopener" data-img="assets/img/reels/cabana-imbituba.jpg" data-cursor="abrir">
+        <span class="rnum">05</span><span class="rname">Encantos do Porto</span><span class="rdesc">Viagem de amigas · SC</span><span class="rgo" aria-hidden="true">↗</span>
+      </a></li>
+      <li><a class="rrow" href="https://www.instagram.com/reel/DYpbZS2uYfE/" target="_blank" rel="noopener" data-img="assets/img/reels/oaks.jpg" data-cursor="abrir">
+        <span class="rnum">06</span><span class="rname">Oak&#x27;s Burritos<em class="at">@oaksburritos</em></span><span class="rdesc">Quinta do Burrito</span><span class="rgo" aria-hidden="true">↗</span>
+      </a></li>
+      <li><a class="rrow" href="https://www.instagram.com/reel/DZyTuO3tryr/" target="_blank" rel="noopener" data-img="assets/img/reels/make-copa.jpg" data-cursor="abrir">
+        <span class="rnum">07</span><span class="rname">Make da Copa<em class="at">@millenagermannmakeup</em></span><span class="rdesc">com @millenagermannmakeup</span><span class="rgo" aria-hidden="true">↗</span>
+      </a></li>
+      <li><a class="rrow" href="https://www.instagram.com/reel/DalwuDjNSQ6/" target="_blank" rel="noopener" data-img="assets/img/reels/poeta-bar.jpg" data-cursor="abrir">
+        <span class="rnum">08</span><span class="rname">Poeta Bar<em class="at">@poetabarbr</em></span><span class="rdesc">Chope, xis e música ao vivo</span><span class="rgo" aria-hidden="true">↗</span>
+      </a></li>
+      <li><a class="rrow" href="https://www.instagram.com/reel/DWpK-gHEUR7/" target="_blank" rel="noopener" data-img="assets/img/reels/nolie.jpg" data-cursor="abrir">
+        <span class="rnum">09</span><span class="rname">Nolie<em class="at">@nolienow</em></span><span class="rdesc">Três amigas, zero dúvida</span><span class="rgo" aria-hidden="true">↗</span>
+      </a></li>
+      <li><a class="rrow" href="https://www.instagram.com/reel/DT3PT9Gj63d/" target="_blank" rel="noopener" data-img="assets/img/reels/mais-nutriente.jpg" data-cursor="abrir">
+        <span class="rnum">10</span><span class="rname">Mais Nutriente</span><span class="rdesc">Marmitas para a rotina</span><span class="rgo" aria-hidden="true">↗</span>
+      </a></li>
+      <li><a class="rrow" href="https://www.instagram.com/reel/DbOBFWKRRXK/" target="_blank" rel="noopener" data-img="assets/img/reels/mais-nutrientes-autocuidado.jpg" data-cursor="abrir">
+        <span class="rnum">11</span><span class="rname">Mais Nutriente</span><span class="rdesc">Autocuidado e marmita</span><span class="rgo" aria-hidden="true">↗</span>
+      </a></li>
+      <li><a class="rrow" href="https://www.instagram.com/reel/DTVjXOKDdqk/" target="_blank" rel="noopener" data-img="assets/img/reels/freddo-cafe.jpg" data-cursor="abrir">
+        <span class="rnum">12</span><span class="rname">Freddo Cafeteria</span><span class="rdesc">Café com sorvete</span><span class="rgo" aria-hidden="true">↗</span>
+      </a></li>
+      <li><a class="rrow" href="https://www.instagram.com/reel/DRAv9-jD-WT/" target="_blank" rel="noopener" data-img="assets/img/reels/trigo-pizzaria.jpg" data-cursor="abrir">
+        <span class="rnum">13</span><span class="rname">Trigo Pizzaria</span><span class="rdesc">Rodízio italiano</span><span class="rgo" aria-hidden="true">↗</span>
+      </a></li>
+      <li><a class="rrow" href="https://www.instagram.com/reel/DS5IZQnDVQT/" target="_blank" rel="noopener" data-img="assets/img/reels/le-belle-canto.jpg" data-cursor="abrir">
+        <span class="rnum">14</span><span class="rname">Le Belle Canto</span><span class="rdesc">Fondue com opções veganas</span><span class="rgo" aria-hidden="true">↗</span>
+      </a></li>
+      <li><a class="rrow" href="https://www.instagram.com/reel/DSN7pX-Ems-/" target="_blank" rel="noopener" data-img="assets/img/reels/museu-do-vinho.jpg" data-cursor="abrir">
+        <span class="rnum">15</span><span class="rname">Museu do Vinho<em class="at">@museudovinhogramado</em></span><span class="rdesc">Gramado · RS</span><span class="rgo" aria-hidden="true">↗</span>
+      </a></li>
+      <li><a class="rrow" href="https://www.instagram.com/p/DLshnPNuLr5/" target="_blank" rel="noopener" data-img="assets/img/reels/rava.jpg" data-cursor="abrir">
+        <span class="rnum">16</span><span class="rname">Rava Beachwear</span><span class="rdesc">Apenas um sussurro do que está por vir</span><span class="rgo" aria-hidden="true">↗</span>
+      </a></li>
+    </ol>
+  </div>
+  <div class="rpeek" id="rpeek" aria-hidden="true"><img alt="" id="rpeekImg"></div>
+</section>
+
+<section class="photos" id="fotos">
+  <div class="wrap sec-head">
+    <h2 class="big">Meu <span class="red">olhar</span></h2>
+    <p>Fotos para marcas: lifestyle, aesthetic e consumidor com produto. Arraste para o lado para ver todas.</p>
+  </div>
+  <div class="strip" id="strip">
+      <figure class="polaroid" style="--r:-4deg"><img src="assets/img/novas/rosa-espelho.jpg" alt="Lidi Michielin · zoew resortwear" loading="lazy" draggable="false"><figcaption>zoew resortwear</figcaption></figure>
+      <figure class="polaroid" style="--r:3deg"><img src="assets/img/novas/evento-oculos.jpg" alt="Lidi Michielin · manda brasa" loading="lazy" draggable="false"><figcaption>manda brasa</figcaption></figure>
+      <figure class="polaroid" style="--r:-2deg"><img src="assets/img/novas/colina-lagos.jpg" alt="Lidi Michielin · colina lagos hotel" loading="lazy" draggable="false"><figcaption>colina lagos hotel</figcaption></figure>
+      <figure class="polaroid" style="--r:5deg"><img src="assets/img/novas/nolie-oculos.jpg" alt="Lidi Michielin · nolie" loading="lazy" draggable="false"><figcaption>nolie</figcaption></figure>
+      <figure class="polaroid" style="--r:-3deg"><img src="assets/img/novas/freddo-milkshake.jpg" alt="Lidi Michielin · freddo" loading="lazy" draggable="false"><figcaption>freddo</figcaption></figure>
+      <figure class="polaroid" style="--r:2deg"><img src="assets/img/novas/oaks-burrito.jpg" alt="Lidi Michielin · oak&#x27;s" loading="lazy" draggable="false"><figcaption>oak&#x27;s</figcaption></figure>
+      <figure class="polaroid" style="--r:-4deg"><img src="assets/img/novas/look-caramelo.jpg" alt="Lidi Michielin · rava beachwear" loading="lazy" draggable="false"><figcaption>rava beachwear</figcaption></figure>
+      <figure class="polaroid" style="--r:3deg"><img src="assets/img/novas/pantene.jpg" alt="Lidi Michielin · pantene" loading="lazy" draggable="false"><figcaption>pantene</figcaption></figure>
+      <figure class="polaroid" style="--r:-2deg"><img src="assets/img/novas/praia-bone.jpg" alt="Lidi Michielin · praia" loading="lazy" draggable="false"><figcaption>praia</figcaption></figure>
+      <figure class="polaroid" style="--r:5deg"><img src="assets/img/novas/zoew-painel.jpg" alt="Lidi Michielin · zoew resortwear" loading="lazy" draggable="false"><figcaption>zoew resortwear</figcaption></figure>
+      <figure class="polaroid" style="--r:-3deg"><img src="assets/img/novas/leg-gym.jpg" alt="Lidi Michielin · leg gym" loading="lazy" draggable="false"><figcaption>leg gym</figcaption></figure>
+      <figure class="polaroid" style="--r:2deg"><img src="assets/img/novas/freddo-casquinha.jpg" alt="Lidi Michielin · freddo" loading="lazy" draggable="false"><figcaption>freddo</figcaption></figure>
+      <figure class="polaroid" style="--r:-4deg"><img src="assets/img/novas/prevent-selfie.jpg" alt="Lidi Michielin · óticas prevent" loading="lazy" draggable="false"><figcaption>óticas prevent</figcaption></figure>
+      <figure class="polaroid" style="--r:3deg"><img src="assets/img/novas/mirante.jpg" alt="Lidi Michielin · viagens" loading="lazy" draggable="false"><figcaption>viagens</figcaption></figure>
+      <figure class="polaroid" style="--r:-2deg"><img src="assets/img/novas/drink-bar.jpg" alt="Lidi Michielin · happy hour" loading="lazy" draggable="false"><figcaption>happy hour</figcaption></figure>
+      <figure class="polaroid" style="--r:5deg"><img src="assets/img/novas/jaqueta-couro.jpg" alt="Lidi Michielin · moda" loading="lazy" draggable="false"><figcaption>moda</figcaption></figure>
+      <figure class="polaroid" style="--r:-3deg"><img src="assets/img/novas/gramado-luzes.jpg" alt="Lidi Michielin · gramado" loading="lazy" draggable="false"><figcaption>gramado</figcaption></figure>
+      <figure class="polaroid" style="--r:2deg"><img src="assets/img/novas/top-preto1.jpg" alt="Lidi Michielin · rava beachwear" loading="lazy" draggable="false"><figcaption>rava beachwear</figcaption></figure>
+      <figure class="polaroid" style="--r:-4deg"><img src="assets/img/novas/freddo-fachada.jpg" alt="Lidi Michielin · freddo" loading="lazy" draggable="false"><figcaption>freddo</figcaption></figure>
+      <figure class="polaroid" style="--r:3deg"><img src="assets/img/novas/camisa-linho.jpg" alt="Lidi Michielin · moda" loading="lazy" draggable="false"><figcaption>moda</figcaption></figure>
+      <figure class="polaroid" style="--r:-2deg"><img src="assets/img/novas/orla.jpg" alt="Lidi Michielin · lifestyle" loading="lazy" draggable="false"><figcaption>lifestyle</figcaption></figure>
+      <figure class="polaroid" style="--r:5deg"><img src="assets/img/novas/pizza-oculos.jpg" alt="Lidi Michielin · noite de pizza" loading="lazy" draggable="false"><figcaption>noite de pizza</figcaption></figure>
+      <figure class="polaroid" style="--r:-3deg"><img src="assets/img/novas/zoew2.jpg" alt="Lidi Michielin · zoew resortwear" loading="lazy" draggable="false"><figcaption>zoew resortwear</figcaption></figure>
+      <figure class="polaroid" style="--r:2deg"><img src="assets/img/novas/praia-chimarrao.jpg" alt="Lidi Michielin · viagens" loading="lazy" draggable="false"><figcaption>viagens</figcaption></figure>
+      <figure class="polaroid" style="--r:-4deg"><img src="assets/img/novas/look-off-white.jpg" alt="Lidi Michielin · moda" loading="lazy" draggable="false"><figcaption>moda</figcaption></figure>
+      <figure class="polaroid" style="--r:3deg"><img src="assets/img/novas/prevent1.jpg" alt="Lidi Michielin · óticas prevent" loading="lazy" draggable="false"><figcaption>óticas prevent</figcaption></figure>
+      <figure class="polaroid" style="--r:-2deg"><img src="assets/img/novas/drink-morango.jpg" alt="Lidi Michielin · gastronomia" loading="lazy" draggable="false"><figcaption>gastronomia</figcaption></figure>
+      <figure class="polaroid" style="--r:5deg"><img src="assets/img/novas/sofa-gato.jpg" alt="Lidi Michielin · lifestyle" loading="lazy" draggable="false"><figcaption>lifestyle</figcaption></figure>
+      <figure class="polaroid" style="--r:-3deg"><img src="assets/img/novas/espelho-fila.jpg" alt="Lidi Michielin · fitness" loading="lazy" draggable="false"><figcaption>fitness</figcaption></figure>
+      <figure class="polaroid" style="--r:2deg"><img src="assets/img/novas/freddo-azul.jpg" alt="Lidi Michielin · freddo" loading="lazy" draggable="false"><figcaption>freddo</figcaption></figure>
+      <figure class="polaroid" style="--r:-4deg"><img src="assets/img/novas/calca-estampada.jpg" alt="Lidi Michielin · aesthetic" loading="lazy" draggable="false"><figcaption>aesthetic</figcaption></figure>
+      <figure class="polaroid" style="--r:3deg"><img src="assets/img/novas/poltrona.jpg" alt="Lidi Michielin · lifestyle" loading="lazy" draggable="false"><figcaption>lifestyle</figcaption></figure>
+      <figure class="polaroid" style="--r:-2deg"><img src="assets/img/novas/selfie-jeans.jpg" alt="Lidi Michielin · beleza" loading="lazy" draggable="false"><figcaption>beleza</figcaption></figure>
+  </div>
+</section>
+
+<section class="faq" id="perguntas">
+  <div class="wrap faq-grid">
+    <h2 class="big">Antes que você pergunte…</h2>
+    <div class="qs">
+      <div class="q"><span>01</span><h3>Quando você pode começar?</h3><p>Assim que o briefing e o contrato estiverem fechados. O prazo de produção conta a partir do recebimento do produto.</p></div>
+      <div class="q"><span>02</span><h3>O que é UGC, afinal?</h3><p>Conteúdo feito por gente real, mostrando a experiência com o produto. Fala a língua das redes e gera mais confiança que um anúncio tradicional.</p></div>
+      <div class="q"><span>03</span><h3>Precisa postar no teu perfil?</h3><p>Não. No UGC a marca recebe os arquivos e posta nos canais dela. Publicar no meu perfil ou fazer collab é um extra.</p></div>
+      <div class="q"><span>04</span><h3>Posso usar nos anúncios?</h3><p>Pode. O uso orgânico é incluso e vitalício. Para Ads, a marca contrata uma licença por período: 30, 90 dias, 6 ou 12 meses, ou sem prazo.</p></div>
+      <div class="q"><span>05</span><h3>Atende fora de Porto Alegre?</h3><p>Atendo o Brasil todo. Recebo o produto em casa e gravo por aqui. Experiências no local também podem ser combinadas.</p></div>
+      <div class="q"><span>06</span><h3>Quanto custa?</h3><p>Depende do escopo, da quantidade e do tempo de uso em Ads. Monte teu pedido logo abaixo e eu respondo com uma proposta.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="quote-box" id="orcamento">
+  <div class="wrap">
+    <form class="qb" id="qb">
+      <div>
+        <h2 class="big">Monta teu <em>pedido</em></h2>
+        <p class="qb-intro">Escolha o que tua marca precisa. Eu monto a mensagem e tu me envia pelo WhatsApp.</p>
+        <div class="terms">
+          <details open><summary>Uso orgânico</summary><p>Incluso em todo pacote, vitalício e perpétuo: feed, Reels, Stories, TikTok, site, e-commerce e e-mail marketing.</p></details>
+          <details><summary>Tráfego pago (Ads)</summary><p>Licença por período para Meta Ads, TikTok Ads e Google/YouTube. Inclui editar, cortar e testar variações. No fim do prazo, os anúncios saem do ar ou a licença é renovada. O uso orgânico continua liberado.</p></details>
+          <details><summary>Contrato e prazos</summary><p>Proposta e contrato, briefing e roteiro aprovados, envio do produto, produção e entrega no prazo combinado, com rodada de ajustes inclusa. Pode ser trabalho pontual ou pacote mensal recorrente.</p></details>
+          <details><summary>Extras</summary><p>Post no meu perfil e collab, Spark Ads, exclusividade de segmento, variações de gancho para teste A/B, arquivos brutos, entrega expressa e presença no local.</p></details>
+        </div>
+      </div>
+      <div>
+        <fieldset><legend>O que tu precisa</legend>
+          <div class="opts">
+            <label class="opt"><input type="checkbox" name="tipo" value="vídeos UGC" id="t-video" checked><span>Vídeos</span></label>
+            <label class="opt"><input type="checkbox" name="tipo" value="fotos" id="t-foto"><span>Fotos</span></label>
+            <label class="opt"><input type="checkbox" name="tipo" value="unboxing/review" id="t-unbox"><span>Unboxing</span></label>
+            <label class="opt"><input type="checkbox" name="tipo" value="experiência no local" id="t-local"><span>No local</span></label>
+          </div>
+        </fieldset>
+        <fieldset><legend>Quantos conteúdos</legend>
+          <div class="qty"><button type="button" id="minus" aria-label="Menos">−</button><output id="qtyOut" aria-live="polite">3</output><button type="button" id="plus" aria-label="Mais">+</button></div>
+        </fieldset>
+        <fieldset><legend>Uso em anúncios</legend>
+          <div class="opts">
+            <label class="opt"><input type="radio" name="ads" value="0" id="a-0" checked><span>Só orgânico</span></label>
+            <label class="opt"><input type="radio" name="ads" value="30 dias" id="a-30"><span>30 dias</span></label>
+            <label class="opt"><input type="radio" name="ads" value="90 dias" id="a-90"><span>90 dias</span></label>
+            <label class="opt"><input type="radio" name="ads" value="6 meses" id="a-180"><span>6 meses</span></label>
+            <label class="opt"><input type="radio" name="ads" value="12 meses" id="a-365"><span>12 meses</span></label>
+            <label class="opt"><input type="radio" name="ads" value="sem prazo" id="a-inf"><span>Sem prazo</span></label>
+          </div>
+        </fieldset>
+        <fieldset><legend>Contrato</legend>
+          <div class="opts">
+            <label class="opt"><input type="radio" name="ctr" value="pontual" id="c-1" checked><span>Pontual</span></label>
+            <label class="opt"><input type="radio" name="ctr" value="mensal recorrente" id="c-2"><span>Mensal</span></label>
+          </div>
+        </fieldset>
+        <p class="summary" id="summary" aria-live="polite"></p>
+        <a class="send" id="send" href="https://wa.me/5551994085937" target="_blank" rel="noopener">Enviar no WhatsApp ↗</a>
+        <p class="qb-note">Valores sob consulta. Tu também pode escrever para lidiugc@gmail.com.</p>
+      </div>
+    </form>
+  </div>
+</section>
+
+<section class="edge" aria-label="Bora criar?">
+  <div class="edge-lines hand" aria-hidden="true">
+    <div>gente real, conteúdo real · gente real, conteúdo real · gente real, conteúdo real · gente real, conteúdo real</div>
+    <div>gente real, conteúdo real · gente real, conteúdo real · gente real, conteúdo real · gente real, conteúdo real</div>
+    <div>gente real, conteúdo real · gente real, conteúdo real · gente real, conteúdo real · gente real, conteúdo real</div>
+    <div>gente real, conteúdo real · gente real, conteúdo real · gente real, conteúdo real · gente real, conteúdo real</div>
+    <div>gente real, conteúdo real · gente real, conteúdo real · gente real, conteúdo real · gente real, conteúdo real</div>
+  </div>
+  <a class="edge-big" href="#orcamento"><span>Bora</span><span>criar?</span></a>
+</section>
+</main>
+
+<footer id="contato">
+  <div class="wrap">
+    <a class="brk" href="#topo" style="float:right"><span><b>Voltar ao topo</b><b>Voltar ao topo</b></span></a>
+    <div class="foot">
+      <div>
+        <span class="logo">Lidi</span>
+        <p>bora criar algo juntos?<br>me chama por aqui:</p>
+        <div class="links">
+          <a href="https://wa.me/5551994085937?text=Oi%20Lidi!%20Vi%20teu%20portf%C3%B3lio." target="_blank" rel="noopener">WhatsApp</a>
+          <a href="https://www.instagram.com/lidimichielin/" target="_blank" rel="noopener">Instagram</a>
+          <a href="mailto:lidiugc@gmail.com">E-mail</a>
+        </div>
+        <div class="copyline"><span>+55 (51) 99408-5937</span><span>·</span><b id="email">lidiugc@gmail.com</b><button class="copy" type="button" data-copy="lidiugc@gmail.com">Copiar</button></div>
+      </div>
+      <ol class="fnav">
+        <li><a href="#trabalhos">Trabalhos <small>01</small></a></li>
+        <li><a href="#videos">Vídeos <small>02</small></a></li>
+        <li><a href="#instagram">Instagram <small>03</small></a></li>
+        <li><a href="#fotos">Fotos <small>04</small></a></li>
+        <li><a href="#perguntas">Perguntas <small>05</small></a></li>
+        <li><a href="#orcamento">Orçamento <small>06</small></a></li>
+      </ol>
+    </div>
+    <div class="legal mono"><span>feito com ♥ e muito café em Porto Alegre</span><span>© 2026 Lidiane Michielin</span></div>
+  </div>
+  <div class="mega" aria-hidden="true">Gente real</div>
+</footer>
+
+<div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" hidden>
+  <div class="modal-box">
+    <p class="modal-title" id="modalTitle"></p>
+    <button class="icon-btn modal-close" id="modalClose" aria-label="Fechar vídeo">×</button>
+    <video id="modalVideo" controls playsinline></video>
+  </div>
+</div>
+<div class="cur" id="cur"><span id="curLabel"></span></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
+<script>
+(() => {
+  const $ = (s, r = document) => r.querySelector(s);
+  const $$ = (s, r = document) => [...r.querySelectorAll(s)];
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const fine = matchMedia('(pointer: fine)').matches;
+  const hasGsap = !!(window.gsap && window.ScrollTrigger);
+  const P = '';
+
+  /* sons sintetizados */
+  const Sfx = { on: false, ctx: null,
+    init() { try { this.ctx = this.ctx || new (window.AudioContext || window.webkitAudioContext)(); this.ctx.resume(); } catch (e) {} },
+    tone(f, d, type = 'sine', v = .1, slide = 0) { if (!this.on || !this.ctx) return; const t = this.ctx.currentTime, o = this.ctx.createOscillator(), g = this.ctx.createGain(); o.type = type; o.frequency.setValueAtTime(f, t); if (slide) o.frequency.exponentialRampToValueAtTime(f * slide, t + d); g.gain.setValueAtTime(v, t); g.gain.exponentialRampToValueAtTime(.0001, t + d); o.connect(g).connect(this.ctx.destination); o.start(t); o.stop(t + d + .02); },
+    pop() { this.tone(560, .12, 'sine', .14, .5); }, tick() { this.tone(1700, .03, 'triangle', .03); },
+    paper() { this.tone(220, .18, 'triangle', .06, 1.8); },
+  };
+  const sb = $('#soundBtn');
+  sb.addEventListener('click', () => { Sfx.on = !Sfx.on; if (Sfx.on) Sfx.init(); sb.setAttribute('aria-pressed', Sfx.on); Sfx.pop(); });
+  document.addEventListener('click', e => { if (e.target.closest('a, .chip, .opt, .qty button, .copy, summary')) Sfx.pop(); });
+  let lt = 0; document.addEventListener('pointerover', e => { if (e.target.closest('a, button, .vtile, .wcard, .polaroid')) { const n = performance.now(); if (n - lt > 90) { lt = n; Sfx.tick(); } } });
+
+  /* rolagem suave */
+  let lenis = null;
+  if (window.Lenis && !reduce) {
+    lenis = new Lenis({ duration: 1.1 });
+    if (hasGsap) { lenis.on('scroll', ScrollTrigger.update); gsap.ticker.add(t => lenis.raf(t * 1000)); gsap.ticker.lagSmoothing(0); }
+    else { const raf = t => { lenis.raf(t); requestAnimationFrame(raf); }; requestAnimationFrame(raf); }
+  }
+  const go = el => lenis ? lenis.scrollTo(el, { offset: -50 }) : el.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth' });
+  $$('a[href^="#"]').forEach(a => a.addEventListener('click', e => { const el = $(a.getAttribute('href')); if (!el) return; e.preventDefault(); closeMenu(); go(el); }));
+
+  /* menu */
+  const menu = $('#menu'), mb = $('#menuBtn');
+  const openMenu = () => { menu.classList.add('is-open'); mb.setAttribute('aria-expanded', 'true'); lenis && lenis.stop(); Sfx.paper(); $('#menuClose').focus(); };
+  function closeMenu() { if (!menu.classList.contains('is-open')) return; menu.classList.remove('is-open'); mb.setAttribute('aria-expanded', 'false'); lenis && lenis.start(); }
+  mb.addEventListener('click', openMenu); $('#menuClose').addEventListener('click', () => { closeMenu(); mb.focus(); });
+
+  /* {{ marca }} digitando */
+  const typed = $('#typed'), words = ['sua marca', 'Coca-Cola', 'Pantene', 'Freddo', 'Nolie', 'Bro Fitwear', 'tua marca'];
+  if (!reduce) {
+    let wi = 0, ci = words[0].length, del = true;
+    const step = () => {
+      const w = words[wi];
+      if (del) { ci--; typed.textContent = w.slice(0, ci); if (ci === 0) { del = false; wi = (wi + 1) % words.length; } setTimeout(step, 45); }
+      else { const nw = words[wi]; ci++; typed.textContent = nw.slice(0, ci); if (ci === nw.length) { del = true; setTimeout(step, 1600); } else setTimeout(step, 85); }
+    };
+    setTimeout(step, 1800);
+  }
+
+  /* cursor */
+  if (fine && !reduce) {
+    document.documentElement.classList.add('has-cur');
+    const c = $('#cur'), l = $('#curLabel'); let x = 0, y = 0, cx = 0, cy = 0;
+    addEventListener('pointermove', e => { x = e.clientX; y = e.clientY; });
+    const loop = () => { cx += (x - cx) * .2; cy += (y - cy) * .2; c.style.transform = `translate(${cx}px,${cy}px)`; requestAnimationFrame(loop); }; loop();
+    document.addEventListener('pointerover', e => { const t = e.target.closest('[data-cursor]'); c.classList.toggle('big', !!t); if (t) l.textContent = t.dataset.cursor; });
+  }
+
+  /* modal de vídeo */
+  const modal = $('#modal'), mv = $('#modalVideo'); let lastFocus = null;
+  const openVideo = (v, title) => {
+    lastFocus = document.activeElement;
+    $$('.vtile video').forEach(x => x.pause());
+    mv.src = P + 'assets/video/' + v + '.mp4'; mv.poster = P + 'assets/video/' + v + '.jpg';
+    $('#modalTitle').textContent = title; modal.hidden = false; lenis && lenis.stop();
+    mv.muted = false; mv.play().catch(() => {}); $('#modalClose').focus(); Sfx.pop();
+  };
+  const closeVideo = () => { mv.pause(); mv.removeAttribute('src'); mv.load(); modal.hidden = true; lenis && lenis.start(); lastFocus && lastFocus.focus(); };
+  $('#modalClose').addEventListener('click', closeVideo);
+  modal.addEventListener('click', e => { if (e.target === modal) closeVideo(); });
+  addEventListener('keydown', e => { if (e.key === 'Escape') { if (!modal.hidden) closeVideo(); else closeMenu(); } });
+  $$('[data-video]').forEach(b => b.addEventListener('click', () => openVideo(b.dataset.video, b.dataset.title)));
+
+  /* prévia ao passar o mouse */
+  if (fine) $$('.vtile').forEach(t => {
+    const v = $('video', t);
+    t.addEventListener('pointerenter', () => { if (!v.src) v.src = v.dataset.src; t.classList.add('is-hover'); v.play().catch(() => {}); });
+    t.addEventListener('pointerleave', () => { t.classList.remove('is-hover'); v.pause(); });
+  });
+
+  /* filtros */
+  const chips = $('#chips');
+  chips.addEventListener('click', e => {
+    const b = e.target.closest('.chip'); if (!b) return;
+    $$('.chip', chips).forEach(c => c.setAttribute('aria-pressed', c === b));
+    $$('.vtile').forEach(t => { t.hidden = b.dataset.n !== 'todos' && t.dataset.n !== b.dataset.n; });
+    hasGsap && ScrollTrigger.refresh();
+  });
+
+  /* reels: prévia que segue o mouse */
+  const peek = $('#rpeek'), pimg = $('#rpeekImg');
+  if (fine) {
+    $$('.rrow').forEach(r => {
+      r.addEventListener('pointerenter', () => { pimg.src = r.dataset.img; peek.classList.add('on'); });
+      r.addEventListener('pointerleave', () => peek.classList.remove('on'));
+    });
+    addEventListener('pointermove', e => { peek.style.transform = `translate(${e.clientX + 24}px, ${e.clientY - 160}px) rotate(4deg)`; });
+  }
+
+  /* polaroids arrastáveis */
+  const strip = $('#strip'); let down = false, sx = 0, sl = 0;
+  strip.addEventListener('pointerdown', e => { if (e.pointerType !== 'mouse') return; down = true; sx = e.clientX; sl = strip.scrollLeft; strip.classList.add('dragging'); });
+  addEventListener('pointerup', () => { down = false; strip.classList.remove('dragging'); });
+  addEventListener('pointermove', e => { if (down) strip.scrollLeft = sl - (e.clientX - sx); });
+
+  /* pedido de orçamento */
+  const form = $('#qb'); let qty = 3;
+  const sum = () => {
+    const tipos = $$('input[name="tipo"]:checked', form).map(i => i.value);
+    const ads = $('input[name="ads"]:checked', form).value, ctr = $('input[name="ctr"]:checked', form).value;
+    $('#qtyOut').textContent = qty;
+    const t = tipos.length ? tipos.join(', ') : 'conteúdo UGC';
+    const usoTxt = ads === '0' ? 'só uso orgânico' : `uso orgânico + Ads por ${ads}`;
+    $('#summary').innerHTML = `<b>${qty} conteúdo${qty > 1 ? 's' : ''}</b> (${t}), <b>${usoTxt}</b>, contrato <b>${ctr}</b>.`;
+    const msg = `Oi Lidi! Vi teu portfólio e quero um orçamento: ${qty} conteúdo${qty > 1 ? 's' : ''} (${t}), ${usoTxt}, contrato ${ctr}.`;
+    $('#send').href = 'https://wa.me/5551994085937?text=' + encodeURIComponent(msg);
+  };
+  form.addEventListener('change', sum); form.addEventListener('submit', e => e.preventDefault());
+  $('#minus').addEventListener('click', () => { qty = Math.max(1, qty - 1); sum(); });
+  $('#plus').addEventListener('click', () => { qty = Math.min(30, qty + 1); sum(); });
+  sum();
+
+  /* copiar e-mail */
+  $$('.copy').forEach(b => b.addEventListener('click', () => {
+    const sel = () => { const r = document.createRange(); r.selectNodeContents($('#email')); getSelection().removeAllRanges(); getSelection().addRange(r); };
+    navigator.clipboard ? navigator.clipboard.writeText(b.dataset.copy).then(() => { b.textContent = 'Copiado'; setTimeout(() => b.textContent = 'Copiar', 1600); }, sel) : sel();
+  }));
+
+  /* skills: uma por vez em foco */
+  const skills = $$('#skills li');
+  const setSkill = i => skills.forEach((s, k) => s.classList.toggle('on', k === i));
+  setSkill(0);
+
+  if (!hasGsap || reduce) {
+    document.documentElement.classList.add('no-pin');
+    if (!reduce) { let i = 0; setInterval(() => setSkill(i = (i + 1) % skills.length), 1400); }
+    else skills.forEach(s => s.classList.add('on'));
+    return;
+  }
+  gsap.registerPlugin(ScrollTrigger);
+
+  /* hero: entrada e saída */
+  const tl = gsap.timeline({ delay: .2 });
+  tl.from('.hero-photo', { y: 120, opacity: 0, duration: 1.1, ease: 'power4.out' })
+    .from('.scribble path', { strokeDasharray: 1400, strokeDashoffset: 1400, duration: 1.6, ease: 'power2.out', stagger: .08 }, '-=.7')
+    .from('.hw-oi, .hw-meet, .hw-name', { scale: .4, opacity: 0, duration: .7, ease: 'back.out(2.2)', stagger: .12 }, '-=1.3')
+    .from('.hw-brand, .hero-sticker', { opacity: 0, y: 20, duration: .6, stagger: .1 }, '-=.5');
+  gsap.to('.hw-oi', { xPercent: -60, ease: 'none', scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: true } });
+  gsap.to('.hw-meet', { xPercent: -50, ease: 'none', scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: true } });
+  gsap.to('.hw-name, .hw-brand', { xPercent: 50, ease: 'none', scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: true } });
+  gsap.to('.hero-photo', { yPercent: 12, ease: 'none', scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: true } });
+
+  /* citação escrita linha a linha */
+  gsap.to('.quote .ln', { clipPath: 'inset(0 0% 0 0)', ease: 'none', stagger: .5, scrollTrigger: { trigger: '.quote', start: 'top 70%', end: 'bottom 60%', scrub: true } });
+
+  /* skills com a rolagem */
+  ScrollTrigger.create({ trigger: '#skills', start: 'top 75%', end: 'bottom 25%', onUpdate: s => setSkill(Math.min(skills.length - 1, Math.floor(s.progress * skills.length))) });
+
+  /* títulos */
+  $$('.sec-head h2, .faq h2, .qb h2, .pitch h2').forEach(h => gsap.from(h, { y: 60, opacity: 0, duration: .9, ease: 'power4.out', scrollTrigger: { trigger: h, start: 'top 88%' } }));
+
+  /* cards empilhando */
+  const mm = gsap.matchMedia();
+  mm.add('(min-width: 700px)', () => {
+    const cards = $$('.wcard');
+    gsap.set(cards, { y: () => innerHeight, rotate: () => gsap.utils.random(-25, 25) });
+    const t2 = gsap.timeline({ scrollTrigger: { trigger: '#trabalhos', start: 'top top', end: '+=' + cards.length * 55 + '%', pin: true, scrub: .8, onEnter: () => Sfx.paper() } });
+    cards.forEach((c, i) => t2.to(c, { y: 0, rotate: 0, duration: 1, ease: 'power3.out', onStart: () => Sfx.paper() }, i * .8));
+    t2.to('.works-title', { scale: .9, opacity: .25, duration: cards.length * .8 }, 0);
+    return () => gsap.set(cards, { clearProps: 'all' });
+  });
+  mm.add('(max-width: 699px)', () => { document.documentElement.classList.add('no-pin'); return () => document.documentElement.classList.remove('no-pin'); });
+
+  /* grade de vídeos entrando */
+  ScrollTrigger.batch('.vtile', { start: 'top 92%', onEnter: b => gsap.from(b, { y: 50, opacity: 0, duration: .6, ease: 'power3.out', stagger: .05 }) });
+  ScrollTrigger.batch('.polaroid', { start: 'left 95%', horizontal: false, onEnter: b => gsap.from(b, { y: 80, rotate: 15, opacity: 0, duration: .7, ease: 'back.out(1.6)', stagger: .06 }) });
+  gsap.from('.q', { y: 40, opacity: 0, duration: .6, stagger: .08, scrollTrigger: { trigger: '.qs', start: 'top 80%' } });
+
+
+  gsap.from('.edge-lines div', { xPercent: (i) => i % 2 ? -30 : 30, ease: 'none', scrollTrigger: { trigger: '.edge', start: 'top bottom', end: 'bottom top', scrub: true } });
+  gsap.from('.edge-big span', { x: i => (i % 2 ? 1 : -1) * innerWidth * .14, ease: 'none', stagger: .1, scrollTrigger: { trigger: '.edge', start: 'top 80%', end: 'center 50%', scrub: true } });
+
+  addEventListener('load', () => ScrollTrigger.refresh());
+})();
+</script>
+</body>
+</html>
