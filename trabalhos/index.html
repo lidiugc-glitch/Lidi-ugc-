@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Trabalhos · Lidi Michielin UGC</title>
+<meta name="description" content="Toca em um vídeo para ver os trabalhos UGC da Lidi Michielin.">
+<meta property="og:title" content="Lidi Michielin · Toca em um vídeo">
+<meta property="og:image" content="fundo.jpg">
+<style>
+@font-face { font-family: "DM Serif Display"; src: url("DMSerifDisplay.ttf") format("truetype"); font-display: swap; }
+:root { --cream: #f6ebcf; --ink: #1d1b18; --berry: #e3335f; color-scheme: dark; }
+* { box-sizing: border-box; }
+html, body { margin: 0; height: 100%; background: var(--ink); color: var(--cream); font-family: "DM Serif Display", Georgia, serif; }
+body { display: grid; place-items: center; overflow: hidden; }
+.stage { position: relative; height: 100svh; aspect-ratio: 9 / 16; max-width: 100vw; overflow: hidden; }
+.bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.glow { position: absolute; left: 50%; top: 46.7%; width: 70%; height: 30%; translate: -50% -50%; background: radial-gradient(closest-side, rgba(20,16,14,.55), transparent); pointer-events: none; }
+.grid { position: absolute; inset: 5% 5.9% 11.6%; display: grid; grid-template-columns: repeat(3, 1fr); grid-template-rows: repeat(3, 1fr); gap: 0 6.5%; row-gap: 4%; }
+.tile { position: relative; display: block; border-radius: 9px; overflow: hidden; background: #000; box-shadow: 0 8px 22px rgba(0,0,0,.35); opacity: 0; scale: .85; animation: pop .45s cubic-bezier(.3,1.5,.5,1) forwards; animation-delay: calc(1.6s + var(--i) * .3s); transition: transform .2s; }
+.tile:hover, .tile:focus-visible { transform: scale(1.04); outline: 2px solid var(--cream); }
+.tile video, .tile img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.tile span { position: absolute; left: 6px; right: 6px; bottom: 6px; font: 600 clamp(9px, 1.6svh, 13px)/1.1 system-ui, sans-serif; letter-spacing: .02em; color: #fff; text-shadow: 0 1px 4px rgba(0,0,0,.8); }
+.tile span::after { content: " ↗"; }
+.center { display: grid; place-items: center; text-align: center; white-space: nowrap; font-size: min(3.6svh, 7.4vw); line-height: 1.05; text-shadow: 0 3px 8px rgba(0,0,0,.6); }
+.center p { margin: 0; }
+.q { position: absolute; inset: 0; display: grid; place-items: center; text-align: center; font-size: min(3.4svh, 7vw); line-height: 1.1; text-shadow: 0 3px 8px rgba(0,0,0,.6); animation: out .3s 1.3s forwards; pointer-events: none; }
+.center p { opacity: 0; animation: in .3s 1.3s forwards; }
+.site { position: absolute; left: 0; right: 0; bottom: 4.5%; text-align: center; font: 600 clamp(11px, 1.7svh, 14px)/1 system-ui, sans-serif; letter-spacing: .14em; text-transform: uppercase; }
+.site a { color: var(--cream); text-decoration: none; padding: 9px 16px; border: 1px solid rgba(246,235,207,.5); border-radius: 999px; background: rgba(29,27,24,.45); }
+@keyframes pop { to { opacity: 1; scale: 1; } }
+@keyframes in { to { opacity: 1; } }
+@keyframes out { to { opacity: 0; } }
+@media (prefers-reduced-motion: reduce) { .tile, .center p { animation: none; opacity: 1; scale: 1; } .q { display: none; } }
+</style>
+</head>
+<body>
+<main class="stage">
+  <video class="bg" src="fundo.mp4" poster="fundo.jpg" autoplay muted loop playsinline aria-hidden="true"></video>
+  <div class="glow"></div>
+  <p class="q">“Posso ver um pouco<br>do teu trabalho?”</p>
+  <nav class="grid" aria-label="Trabalhos da Lidi">
+    <a class="tile" style="--i:0" href="https://www.instagram.com/reel/DZ5XNttgSnI/" target="_blank" rel="noopener"><video src="../assets/video/n-coca-cola.mp4#t=11" poster="../assets/video/n-coca-cola.jpg" muted autoplay loop playsinline></video><span>Coca-Cola</span></a>
+    <a class="tile" style="--i:1" href="https://www.instagram.com/reel/DZsT_3XAMUG/" target="_blank" rel="noopener"><video src="../assets/video/n-pantene.mp4#t=1" poster="../assets/video/n-pantene.jpg" muted autoplay loop playsinline></video><span>Pantene</span></a>
+    <a class="tile" style="--i:2" href="https://www.instagram.com/reel/DWpK-gHEUR7/" target="_blank" rel="noopener"><video src="../assets/video/n-nolie.mp4#t=24" poster="../assets/video/n-nolie.jpg" muted autoplay loop playsinline></video><span>Nolie</span></a>
+    <a class="tile" style="--i:3" href="https://www.instagram.com/zoewresortwear/" target="_blank" rel="noopener"><video src="../assets/video/n-vestido.mp4#t=9" poster="../assets/video/n-vestido.jpg" muted autoplay loop playsinline></video><span>Zoew</span></a>
+    <div class="center"><p>Claro!<br>Toca em<br>um vídeo</p></div>
+    <a class="tile" style="--i:4" href="https://www.instagram.com/p/DLshnPNuLr5/" target="_blank" rel="noopener"><video src="../assets/video/v-moda1.mp4#t=6" poster="../assets/video/v-moda1.jpg" muted autoplay loop playsinline></video><span>Rava</span></a>
+    <a class="tile" style="--i:5" href="https://www.instagram.com/reel/DWXJeInD0NT/" target="_blank" rel="noopener"><video src="../assets/video/v-gas1.mp4#t=20" poster="../assets/video/v-gas1.jpg" muted autoplay loop playsinline></video><span>Freddo</span></a>
+    <a class="tile" style="--i:6" href="https://www.instagram.com/reel/DfCvAtNgb8U/" target="_blank" rel="noopener"><video src="../assets/video/n-bro-fitwear.mp4#t=43" poster="../assets/video/n-bro-fitwear.jpg" muted autoplay loop playsinline></video><span>Bro Fitwear</span></a>
+    <a class="tile" style="--i:7" href="https://www.instagram.com/lidimichielin/" target="_blank" rel="noopener"><video src="../assets/video/n-autocuidado.mp4#t=14" poster="../assets/video/n-autocuidado.jpg" muted autoplay loop playsinline></video><span>We Beauty</span></a>
+  </nav>
+  <p class="site"><a href="../">ver portfólio completo</a></p>
+</main>
+</body>
+</html>
