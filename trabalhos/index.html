@@ -28,6 +28,12 @@ body { display: grid; place-items: center; overflow: hidden; }
 .center p { opacity: 0; animation: in .3s 1.3s forwards; }
 .site { position: absolute; left: 0; right: 0; bottom: 4.5%; text-align: center; font: 600 clamp(11px, 1.7svh, 14px)/1 system-ui, sans-serif; letter-spacing: .14em; text-transform: uppercase; }
 .site a { color: var(--cream); text-decoration: none; padding: 9px 16px; border: 1px solid rgba(246,235,207,.5); border-radius: 999px; background: rgba(29,27,24,.45); }
+.player { position: fixed; inset: 0; z-index: 10; display: grid; place-items: center; background: rgba(15,12,10,.92); padding: 16px; }
+.player[hidden] { display: none; }
+.player video { max-height: 78svh; max-width: 100%; border-radius: 12px; background: #000; }
+.player .bar { display: flex; gap: 10px; margin-top: 14px; justify-content: center; flex-wrap: wrap; }
+.player .bar a, .player .bar button { font: 600 13px/1 system-ui, sans-serif; letter-spacing: .08em; text-transform: uppercase; color: var(--cream); text-decoration: none; padding: 11px 16px; border-radius: 999px; border: 1px solid rgba(246,235,207,.5); background: transparent; cursor: pointer; }
+.player .box { display: grid; justify-items: center; }
 @keyframes pop { to { opacity: 1; scale: 1; } }
 @keyframes in { to { opacity: 1; } }
 @keyframes out { to { opacity: 0; } }
@@ -48,9 +54,29 @@ body { display: grid; place-items: center; overflow: hidden; }
     <a class="tile" style="--i:4" href="https://www.instagram.com/p/DLshnPNuLr5/" target="_blank" rel="noopener"><video src="../assets/video/v-moda1.mp4#t=6" poster="../assets/video/v-moda1.jpg" muted autoplay loop playsinline></video><span>Rava</span></a>
     <a class="tile" style="--i:5" href="https://www.instagram.com/reel/DWXJeInD0NT/" target="_blank" rel="noopener"><video src="../assets/video/v-gas1.mp4#t=20" poster="../assets/video/v-gas1.jpg" muted autoplay loop playsinline></video><span>Freddo</span></a>
     <a class="tile" style="--i:6" href="https://www.instagram.com/reel/DfCvAtNgb8U/" target="_blank" rel="noopener"><video src="../assets/video/n-bro-fitwear.mp4#t=43" poster="../assets/video/n-bro-fitwear.jpg" muted autoplay loop playsinline></video><span>Bro Fitwear</span></a>
-    <a class="tile" style="--i:7" href="https://www.instagram.com/reel/DRAv9-jD-WT/" target="_blank" rel="noopener"><img src="../assets/img/reels/trigo-pizzaria.jpg" alt=""><span>Trigo Pizzaria</span></a>
+    <a class="tile" style="--i:7" href="https://www.instagram.com/lidimichielin/" target="_blank" rel="noopener"><video src="../assets/video/n-skincare.mp4#t=5" poster="../assets/video/n-skincare.jpg" muted autoplay loop playsinline></video><span>Be Una</span></a>
   </nav>
   <p class="site"><a href="../">ver portfólio completo</a></p>
+  <div class="player" id="player" hidden role="dialog" aria-label="Vídeo">
+    <div class="box">
+      <video id="pv" controls playsinline></video>
+      <div class="bar"><a id="pig" href="#" target="_blank" rel="noopener">ver no Instagram</a><button type="button" id="pclose">fechar ✕</button></div>
+    </div>
+  </div>
 </main>
+<script>
+const pl = document.getElementById('player'), pv = document.getElementById('pv'), pig = document.getElementById('pig');
+document.querySelectorAll('a.tile').forEach(a => a.addEventListener('click', e => {
+  e.preventDefault();
+  const v = a.querySelector('video');
+  pv.src = v.getAttribute('src').split('#')[0]; pv.poster = v.getAttribute('poster');
+  pig.href = a.href; pig.hidden = !/\/(reel|p)\//.test(a.href);
+  pl.hidden = false; pv.currentTime = 0; pv.muted = false; pv.play().catch(() => {});
+}));
+const close = () => { pv.pause(); pv.removeAttribute('src'); pv.load(); pl.hidden = true; };
+document.getElementById('pclose').addEventListener('click', close);
+pl.addEventListener('click', e => { if (e.target === pl) close(); });
+addEventListener('keydown', e => { if (e.key === 'Escape' && !pl.hidden) close(); });
+</script>
 </body>
 </html>
