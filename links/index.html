@@ -34,6 +34,13 @@ h2 span { color: var(--berry); }
 .btn small { display: block; font-weight: 500; font-size: 13px; color: var(--ink-60); margin-top: 2px; }
 .btn.main { background: var(--ink); color: var(--paper); }
 .btn.main small { color: rgba(244,241,232,.7); }
+.cpn { display: grid; }
+.cpn .btn { border-radius: 14px 14px 0 0; }
+.code { display: flex; align-items: center; justify-content: center; gap: 8px; padding: 10px 12px; border: 0; border-top: 1.5px dashed var(--line); border-radius: 0 0 14px 14px; background: #fde8ee; color: var(--ink); font: 500 13px/1 system-ui, sans-serif; cursor: pointer; box-shadow: 0 4px 14px rgba(29,27,24,.05); }
+.code span { color: var(--ink-60); text-transform: uppercase; letter-spacing: .08em; font-size: 11px; }
+.code b { font: 700 15px/1 ui-monospace, "SF Mono", Menlo, monospace; letter-spacing: .06em; color: var(--berry); }
+.code i { font-style: normal; font-size: 12px; padding: 5px 9px; border-radius: 999px; background: var(--card); }
+.code.ok i { background: var(--berry); color: #fff; }
 footer { margin-top: 26px; text-align: center; font-size: 12px; color: var(--ink-60); letter-spacing: .04em; }
 footer a { color: inherit; }
 </style>
@@ -60,12 +67,32 @@ footer a { color: inherit; }
   <a class="btn" href="mailto:lidiugc@gmail.com"><span class="ico"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M3 5h18a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1zm9 7.2L4 7v1.6l8 5.1 8-5.1V7z"/></svg></span><b>Mande um e-mail<small>lidiugc@gmail.com</small></b><span></span></a>
 
   <h2>Cupons &amp; <span>indicações</span></h2>
-  <a class="btn" href="https://www.instagram.com/oticasprevent/" target="_blank" rel="noopener"><img src="../assets/img/novas/prevent-selfie.jpg" alt=""><b>Óticas Prevent<small>óculos de grau e de sol</small></b><span></span></a>
+  <a class="btn" href="https://lp.oticasprevent.com.br/influencer/?utm_source=Influencer&utm_medium=stories&utm_campaign=Lidiane+Michielin" target="_blank" rel="noopener"><img src="../assets/img/novas/prevent-selfie.jpg" alt=""><b>Óticas Prevent | Garanta seu voucher de desconto<small>óculos de grau e de sol</small></b><span></span></a>
+  <div class="cpn">
+    <a class="btn" href="https://www.instagram.com/maisnutriente/" target="_blank" rel="noopener"><img src="../assets/img/reels/mais-nutriente.jpg" alt=""><b>Mais Nutriente<small>marmitas congeladas em POA</small></b><span></span></a>
+    <button class="code" type="button" data-code="LIDI10"><span>cupom</span> <b>LIDI10</b> <i>copiar</i></button>
+  </div>
+  <div class="cpn">
+    <a class="btn" href="https://www.instagram.com/nolienow/" target="_blank" rel="noopener"><img src="../assets/img/novas/nolie-oculos.jpg" alt=""><b>Nolie<small>bebidas e lanches</small></b><span></span></a>
+    <button class="code" type="button" data-code="LIDINULLE"><span>cupom</span> <b>LIDINULLE</b> <i>copiar</i></button>
+  </div>
+  <div class="cpn">
+    <a class="btn" href="https://www.instagram.com/brofitwear_parkshoppingcanoas/" target="_blank" rel="noopener"><img src="../assets/img/reels/bro-fitwear.jpg" alt=""><b>Bro Fitwear<small>moda fitness · ParkShopping Canoas</small></b><span></span></a>
+    <button class="code" type="button" data-code="LIDIMICHIELIN10"><span>cupom</span> <b>LIDIMICHIELIN10</b> <i>copiar</i></button>
+  </div>
+
+  <h2>Lugares que <span>eu amo</span></h2>
   <a class="btn" href="https://www.instagram.com/freddobrasil/" target="_blank" rel="noopener"><img src="../assets/img/novas/freddo-casquinha.jpg" alt=""><b>Freddo<small>gelato e cafeteria</small></b><span></span></a>
   <a class="btn" href="https://www.instagram.com/trigo.pizzaria/" target="_blank" rel="noopener"><img src="../assets/img/reels/trigo-pizzaria.jpg" alt=""><b>Trigo Pizzaria<small>rodízio italiano em POA</small></b><span></span></a>
   <a class="btn" href="https://www.instagram.com/useleggym/" target="_blank" rel="noopener"><img src="../assets/img/novas/leg-gym.jpg" alt=""><b>Leg Gym<small>moda fitness</small></b><span></span></a>
 
   <footer>© 2026 Lidi Michielin · <a href="https://lidiugc.com.br">lidiugc.com.br</a></footer>
 </main>
+<script>
+document.querySelectorAll('.code').forEach(b => b.addEventListener('click', () => {
+  const done = () => { b.classList.add('ok'); b.querySelector('i').textContent = 'copiado!'; setTimeout(() => { b.classList.remove('ok'); b.querySelector('i').textContent = 'copiar'; }, 1800); };
+  if (navigator.clipboard) navigator.clipboard.writeText(b.dataset.code).then(done, () => {}); 
+}));
+</script>
 </body>
 </html>
